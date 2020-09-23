@@ -1,27 +1,30 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
+    padding: 0 20px;
+    padding-top: 60px;
 }
 
 .card-header {
-  font-weight: bolder;
-  font-size: 1.5rem;
+    font-weight: bolder;
+    font-size: 1.2vw;
 }
 
 .card-title {
-  font-weight: bolder;
-  font-size: 2.5rem;
- 
+    font-weight: bolder;
+    font-size: 2.5vw;
 }
 
 .layers {
-  height: 140px;
+    height: 140px;
 }
 
-.w-15 {
-  width: 15% !important;
+
+/* Navbar */
+
+nav {
+    background: linear-gradient(90deg, #e2051b, #a3191c);
+}
+
+nav img {
+    height: 1.5rem;
+    margin: 5px;
 }
