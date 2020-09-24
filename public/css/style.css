@@ -1,0 +1,53 @@
+body {
+    padding: 0 20px;
+    padding-top: 60px;
+    font-family: Roboto;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.card-header {
+    font-weight: bolder;
+    font-size: 1.2vw;
+}
+
+.card-title {
+    font-weight: bolder;
+    font-size: 2.5vw;
+}
+
+.layers {
+    height: 140px;
+}
+
+.jumbotron {
+    background-image: url(../images/corner.png);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-color: #e6e6e6;
+    padding: 2rem;
+}
+
+
+/* Navbar */
+
+nav {
+    background: linear-gradient(90deg, #e2051b, #a3191c);
+}
+
+nav img {
+    height: 1.5rem;
+    margin: 5px;
+}
+
+footer {
+    background: #6e6e6e;
+    color: white;
+    font-size: 10px;
+}
+
+footer img {
+    height: 1rem;
+}
