@@ -1,0 +1,12 @@
+kind: BuildConfig
+apiVersion: v1
+metadata:
+  name: "nodejs-teom" 
+spec:
+  source: 
+    git:
+      uri: "http://hit.tsoftlatam.com:3003/victor.mgonzalez/nodejs-teom.git"
+      ref: develop
+  strategy:
+    dockerStrategy:
+      dockerfilePath: Dockerfile
