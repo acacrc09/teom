@@ -1,0 +1,22 @@
+# MAC Grabage
+*.DS_Store
+
+# Nginx
+nginx/
+
+# Node
+node_modules/
+
+# Openshift
+openshift/
+
+# Git
+.gitignore
+
+# Docker
+Dockerfile
+README.md
+stack.yml
+
+# Make
+Makefile
