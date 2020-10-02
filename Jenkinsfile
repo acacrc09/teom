@@ -22,13 +22,6 @@ pipeline{
         sh '$(npm bin)/ng lint'
       }
     }
-    stage ('Inspección con Sonarqube'){
-      steps{
-        sh '''
-          npm run sonar          
-        '''
-      }
-    }    
     stage ('Construcción Aplicación') {
       steps{
         sh '$(npm bin)/ng build --prod --build-optimizer'
