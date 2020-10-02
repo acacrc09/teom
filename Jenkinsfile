@@ -17,6 +17,13 @@ pipeline{
         '''
       }
     }
+    stage ('Inspección con Sonarqube'){
+      steps{
+        sh '''
+          npm run sonar          
+        '''
+      }
+    }
     stage ('Desplegar') { 
       steps{
         script {
