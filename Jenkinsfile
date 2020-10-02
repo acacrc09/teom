@@ -16,16 +16,6 @@ pipeline{
           npm install --verbose -d          
         '''
       }
-    }    
-    stage ('Revisión calidad con LINT'){
-      steps{
-        sh '$(npm bin)/ng lint'
-      }
-    }
-    stage ('Construcción Aplicación') {
-      steps{
-        sh '$(npm bin)/ng build --prod --build-optimizer'
-      }
     }
     stage ('Desplegar') { 
       steps{
