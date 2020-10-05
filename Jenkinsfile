@@ -35,7 +35,7 @@ pipeline{
         }
       }
     }
-    stage ('Desplegar') { 
+    stage ('Probar API con Newman') { 
       steps{
         sh '''
           npm run newman          
