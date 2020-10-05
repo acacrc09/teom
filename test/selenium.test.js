@@ -8,9 +8,15 @@ describe('test google.com', () => {
     } = require('selenium-webdriver');
     var driver;
 
+    const screen = {
+        width: 1024,
+        height: 768
+    };
+
     beforeEach(() => {
         driver = new Builder()
             .forBrowser('chrome')
+            .setChromeOptions(new chrome.Options().headless().windowSize(screen))
             .build();
     });
 
