@@ -42,5 +42,12 @@ pipeline{
         '''
       }
     }
+    stage ('Probar WEB con Nightwash/Selenium') { 
+      steps{
+        sh '''
+          npm run selenium          
+        '''
+      }
+    }
   }
 }

@@ -5,7 +5,8 @@
     "scripts": {
         "start": "node ./bin/www",
         "sonar": "sonar-scanner -Dsonar.projectKey=teom -Dsonar.sources=. -Dsonar.host.url=http://sonarqube-poc-angular.apps.okd.soft1.xyz -Dsonar.login=d5ec678c0439f82a0b508f6e823bf74cee8095a8 -Dsonar.scm.forceReloadAll=true -Dsonar.qualitygate.wait=true",
-        "newman": "newman run -h"
+        "newman": "newman run -h",
+        "selenium": "npm -v"
     },
     "dependencies": {
         "cookie-parser": "~1.4.4",
