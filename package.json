@@ -6,7 +6,7 @@
         "start": "node ./bin/www",
         "sonar": "sonar-scanner -Dsonar.projectKey=teom -Dsonar.sources=. -Dsonar.host.url=http://sonarqube-poc-angular.apps.okd.soft1.xyz -Dsonar.login=d5ec678c0439f82a0b508f6e823bf74cee8095a8 -Dsonar.scm.forceReloadAll=true -Dsonar.qualitygate.wait=true",
         "newman": "newman run -h",
-        "selenium": "npm -v"
+        "selenium": "jest"
     },
     "dependencies": {
         "cookie-parser": "~1.4.4",
@@ -18,8 +18,10 @@
     },
     "devDependencies": {
         "install": "^0.13.0",
+        "jest": "^26.5.0",
         "newman": "^3.9.2",
         "npm": "^6.14.8",
+        "selenium-webdriver": "^4.0.0-alpha.7",
         "sonar-scanner": "^3.1.0"
     }
 }
