@@ -18,7 +18,7 @@
         "pug": "^3.0.0"
     },
     "devDependencies": {
-        "chromedriver": "^85.0.1",
+        "chromedriver": "^75.0.3770.140",
         "install": "^0.13.0",
         "jest": "^24.9.0",
         "mocha": "^6.2.3",
