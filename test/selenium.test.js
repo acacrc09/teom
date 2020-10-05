@@ -1,5 +1,6 @@
 const fs = require('fs');
 describe('test google.com', () => {
+    const chrome = require('selenium-webdriver/chrome');
     const {
         Builder,
         By,
