@@ -17,6 +17,13 @@ pipeline{
         '''
       }
     }
+    stage ('Pruebas unitarias'){
+      steps{
+        sh '''
+          npm run unit          
+        '''
+      }
+    }
     stage ('Inspección con Sonarqube'){
       steps{
         sh '''
@@ -42,7 +49,7 @@ pipeline{
         '''
       }
     }
-    stage ('Probar WEB con Nightwash/Selenium') { 
+    stage ('Probar WEB con Selenium') { 
       steps{
         sh '''
           npm run selenium          
