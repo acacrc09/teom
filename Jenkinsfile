@@ -13,9 +13,7 @@ pipeline{
     stage ('Instalar dependencias'){
       steps{
         sh '''
-          npm install n --save-dev
-          npm install --verbose -d          
-          npm run n          
+          npm install --verbose -d     
         '''
       }
     }
