@@ -14,7 +14,7 @@ pipeline{
       steps{
         sh '''
           npm install n
-          n latest
+          /usr/local/lib/node_modules/.bin/n latest
           npm install --verbose -d          
         '''
       }
