@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "07a10090-722c-45b4-977c-1c6eab7d4930",
+		"name": "Atlassian",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://digital-sales-tsoft-chile.atlassian.net/rest/api/3/project",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "esOObG53IAfZcqmb6l2o3105",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "victor.mgonzalez@tsoftlatam.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://digital-sales-tsoft-chile.atlassian.net/rest/api/3/project",
+					"protocol": "https",
+					"host": [
+						"digital-sales-tsoft-chile",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"project"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
