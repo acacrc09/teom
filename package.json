@@ -1,20 +1,24 @@
 {
-  "name": "nodejs-teom",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www",
-    "sonar": "sonar-scanner -Dsonar.projectKey=teom -Dsonar.sources=. -Dsonar.host.url=http://sonarqube-poc-angular.apps.okd.soft1.xyz -Dsonar.login=d5ec678c0439f82a0b508f6e823bf74cee8095a8 -Dsonar.scm.forceReloadAll=true -Dsonar.qualitygate.wait=true"
-  },
-  "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
-    "pug": "2.0.0-beta11"
-  },
-  "devDependencies": {
-      "sonar-scanner": "^3.1.0"
-  }
+    "name": "nodejs-teom",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node ./bin/www",
+        "sonar": "sonar-scanner -Dsonar.projectKey=teom -Dsonar.sources=. -Dsonar.host.url=http://sonarqube-poc-angular.apps.okd.soft1.xyz -Dsonar.login=d5ec678c0439f82a0b508f6e823bf74cee8095a8 -Dsonar.scm.forceReloadAll=true -Dsonar.qualitygate.wait=true",
+        "newman": "newman run -h"
+    },
+    "dependencies": {
+        "cookie-parser": "~1.4.4",
+        "debug": "~2.6.9",
+        "express": "~4.16.1",
+        "http-errors": "~1.6.3",
+        "morgan": "~1.9.1",
+        "pug": "2.0.0-beta11"
+    },
+    "devDependencies": {
+        "sonar-scanner": "^3.1.0",
+        "newman": "3.9.2",
+        "newman-reporter-junitfull": "1.1.1",
+        "newman-reporter-htmlextra": "1.19.2"
+    }
 }

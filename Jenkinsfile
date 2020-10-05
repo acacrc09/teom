@@ -35,5 +35,12 @@ pipeline{
         }
       }
     }
+    stage ('Desplegar') { 
+      steps{
+        sh '''
+          npm run newman          
+        '''
+      }
+    }
   }
 }
