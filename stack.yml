@@ -1,0 +1,38 @@
+# Jmeter Stack
+version: '3.8'
+services:
+  teom-proxy:
+    image: 'tsoftglobal/teom-proxy:latest'
+    hostname: 'teom-proxy'
+    ports:
+      - '80:80'
+      - '443:443'
+    environment:
+      - 'WAIT_HOSTS=teom:3000'
+      - 'WAIT_HOSTS_TIMEOUT=300'
+      - 'WAIT_SLEEP_INTERVAL=5'
+    networks:
+      - 'network'
+  teom:
+    image: 'tsoftglobal/teom:latest'
+    hostname: 'teom'
+    environment:
+      - 'WAIT_HOSTS=mongodb:27017'
+      - 'WAIT_HOSTS_TIMEOUT=300'
+      - 'WAIT_SLEEP_INTERVAL=5'
+    networks:
+      - 'network'
+  mongodb:
+    image: 'mongo:latest'
+    hostname: 'mongo'
+    volumes:
+      - 'mongodb-data:/data/db'
+    environment:
+      - 'MONGO_INITDB_ROOT_USERNAME=teom'
+      - 'MONGO_INITDB_ROOT_PASSWORD=teom*admin'
+    networks:
+      - 'network'
+networks:
+  network:
+volumes:
+  mongodb-data:

@@ -1,0 +1,75 @@
+extends ../layout
+
+block content
+  .jumbotron
+    .row
+      .col-3
+        .card.text-center
+          .card-header CI/CD
+          .card-body 
+            a(href='http://hit.tsoftlatam.com:3002/', target='_blank')          
+              img(src='images/logo/artifactory.png').w-50
+            a(href='http://hit.tsoftlatam.com:3003/', target='_blank')
+              img(src='images/logo/gitlab.png').w-50
+            a(href='http://hit.tsoftlatam.com:3001/', target='_blank')           
+              img(src='images/logo/jenkins.png').w-75
+            img(src='images/logo/docker.png').w-50
+            img(src='images/logo/terraform.png').w-25
+            img(src='images/logo/ansible.png').w-25
+            
+        
+        .card.text-center.my-4
+          .card-header COLLABORATION
+          .card-body            
+            a(href='http://hit.tsoftlatam.com:28080/', target='_blank')
+              img(src='images/logo/jira.png').w-75.my-5
+            a(href='http://hit.tsoftlatam.com:58090/', target='_blank')
+              img(src='images/logo/confluence.png').w-75
+            img(src='images/logo/teams.png').w-75.my-5
+            
+      .col-6
+        .card.text-center
+          .card-header FRONTEND
+          .card-body.layers           
+            img(src='images/logo/angular.png').w-25
+            img(src='images/logo/react.png').w-25.px-5
+        
+        .card.text-center.my-3
+          .card-header BACKEND
+          .card-body.layers 
+            img(src='images/logo/java.png').h-100
+            img(src='images/logo/springboot.png').h-100.px-5
+            img(src='images/logo/nodejs.png').h-100
+        
+        .card.text-center
+          .card-header DATABASE
+          .card-body.layers           
+            img(src='images/logo/postgresql.png').h-100
+            img(src='images/logo/mongodb.png').h-75.px-5
+
+        .card.text-center.my-3
+          .card-header PLATFORM
+          .card-body.layers
+            a(href='https://console.okd.soft1.xyz:8443/', target='_blank')           
+              img(src='images/logo/openshift.png').h-50
+            img(src='images/logo/azure.png').h-50.px-5
+            img(src='images/logo/vmware.png').h-100
+      
+      .col-3
+        .card.text-center
+          .card-header QUALITY
+          .card-body   
+            img(src='images/logo/sonarqube.png').w-75
+            img(src='images/logo/postman.png').w-50.m-4
+            img(src='images/logo/selenium.png').w-25
+            img(src='images/logo/jmeter.png').w-50
+
+        .card.text-center.my-4
+          .card-header OPS
+          .card-body.py-5
+            img(src='images/logo/elk.png').w-50
+            img(src='images/logo/dynatrace.png').w-75.m-4
+            //img(src='images/logo/jiraservicedesk.png').w-100
+            img(src='images/logo/servicenow.png').w-75
+
+
