@@ -8,4 +8,4 @@ spec:
       uri: "http://hit.tsoftlatam.com:3003/sre/nodejs-teom.git"
   strategy:
     jenkinsPipelineStrategy:
-      jenkinsfilePath: Jenkinsfile
+      jenkinsfilePath: openshift/Jenkinsfile
