@@ -6,6 +6,8 @@ spec:
   source:
     git:
       uri: "http://hit.tsoftlatam.com:3003/sre/nodejs-teom.git"
+    sourceSecret:
+      name: gitlabnodejsteom
   strategy:
     jenkinsPipelineStrategy:
       jenkinsfilePath: openshift/Jenkinsfile
