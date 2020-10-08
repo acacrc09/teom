@@ -92,7 +92,8 @@ objects:
           value: ${name}-${branch}
     triggers:
     - type: ConfigChange
-    - gitlab:
+    - type: GitLab 
+      gitlab:
         secretReference:
           name: gitlab
 parameters:
