@@ -21,6 +21,7 @@ objects:
         - name: templateName
           value: ${name}-${branch}
     triggers:
+    - type: ConfigChange
     - gitlab:
         secretReference:
           name: gitlab
