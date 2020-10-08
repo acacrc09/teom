@@ -37,7 +37,7 @@ pipeline{
         script {
           openshift.withCluster() {
             openshift.withProject('teom') {
-              openshift.selector("bc", "nodejs-teom").startBuild("--from-dir=./", "--wait=true", "--follow", "--loglevel=8")
+              openshift.selector("bc", ${templateName}).startBuild("--from-dir=./", "--wait=true", "--follow", "--loglevel=8")
             }
           }
         }

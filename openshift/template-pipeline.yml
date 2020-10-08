@@ -1,0 +1,35 @@
+apiVersion: v1                                                                              
+kind: Template
+metadata:
+  name: nodejs-teom-pipeline
+objects:
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    name: ${name}-${branch}
+  spec:
+    source:
+      git:
+        uri: http://hit.tsoftlatam.com:3003/sre/nodejs-teom.git
+        ref: ${branch}
+      sourceSecret:
+        name: gitlabnodejsteom
+    strategy:
+      jenkinsPipelineStrategy:
+        jenkinsfilePath: openshift/Jenkinsfile
+        env:
+        - name: templateName
+          value: ${name}-${branch}
+    triggers:
+    - gitlab:
+        secretReference:
+          name: gitlab
+parameters:
+- displayName: Nombre del Pipeline
+  required: true
+  name: name
+  value: nodejs-pipeline
+- displayName: Rama de la Aplicación
+  required: true
+  name: branch
+  value: develop
