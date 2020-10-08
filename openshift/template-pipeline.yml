@@ -4,9 +4,79 @@ metadata:
   name: nodejs-teom-pipeline
 objects:
 - apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: ${name}-${branch}
+- apiVersion: v1
+  kind: Route
+  metadata:
+    name: ${name}-${branch}
+  spec:
+    port:
+      targetPort: 3000-tcp
+    to:
+      kind: Service
+      name: ${name}-${branch}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: ${name}-${branch}
+  spec:
+    ports:
+    - name: 3000-tcp
+      port: 3000
+      protocol: TCP
+    selector:
+      app: ${name}-${branch}
+      deploymentconfig: ${name}-${branch}
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    name: ${name}-${branch}
+  spec:
+    replicas: 1
+    selector:    
+      app: ${name}-${branch}
+      deploymentconfig: ${name}-${branch}
+    template:
+      metadata:
+        labels:
+          app: ${name}-${branch} 
+          deploymentconfig: ${name}-${branch} 
+      spec:
+        containers:
+        - image: docker-registry.default.svc:5000/teom/${name}-${branch}
+          name: ${name}-${branch}
+          ports:
+          - containerPort: 3000
+            protocol: TCP
+  triggers:
+    - imageChangeParams:
+      from:
+        kind: ImageStreamTag
+        name: ${name}-${branch}:latest   
+- apiVersion: v1
   kind: BuildConfig
   metadata:
     name: ${name}-${branch}
+  spec:
+    source:
+      binary: {}
+      type: Binary 
+    strategy:
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: nodejs:latest
+          namespace: openshift
+    output:
+      to:
+        kind: ImageStreamTag
+        name: ${name}-${branch}:latest
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    name: ${name}-pipeline-${branch}
   spec:
     source:
       git:
@@ -26,10 +96,10 @@ objects:
         secretReference:
           name: gitlab
 parameters:
-- displayName: Nombre del Pipeline
+- displayName: Nombre de la Aplicación
   required: true
   name: name
-  value: nodejs-pipeline
+  value: nodejs-teom
 - displayName: Rama de la Aplicación
   required: true
   name: branch
