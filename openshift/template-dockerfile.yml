@@ -8,6 +8,16 @@ objects:
     metadata:
       name: ${name}-${branch}
   - apiVersion: v1
+    kind: Route
+    metadata:
+      name: ${name}-${branch}
+    spec:
+      port:
+        targetPort: 3000-tcp
+      to:
+        kind: Service
+        name: ${name}-${branch}
+  - apiVersion: v1
     kind: Service
     metadata:
       name: ${name}-${branch}
