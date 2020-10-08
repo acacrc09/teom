@@ -1,0 +1,76 @@
+apiVersion: v1                                                                              
+kind: Template
+metadata:
+  name: nodejs-teom-docker
+objects:
+  - apiVersion: v1
+    kind: ImageStream
+    metadata:
+      name: ${name}-${branch}
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: ${name}-${branch}
+    spec:
+      ports:
+      - name: 3000-tcp
+        port: 3000
+        protocol: TCP
+      selector:
+        app: ${name}-${branch}
+        deploymentconfig: ${name}-${branch}
+  - apiVersion: v1
+    kind: DeploymentConfig
+    metadata:
+      name: ${name}-${branch}
+    spec:
+      replicas: 1
+      selector:    
+        app: ${name}-${branch}
+        deploymentconfig: ${name}-${branch}
+      template:
+        metadata:
+          labels:
+            app: ${name}-${branch} 
+            deploymentconfig: ${name}-${branch} 
+        spec:
+          containers:
+          - image: docker-registry.default.svc:5000/teom/${name}-${branch}
+            name: ${name}-${branch}
+            ports:
+            - containerPort: 3000
+              protocol: TCP
+    triggers:
+      - imageChangeParams:
+        from:
+          kind: ImageStreamTag
+          name: ${name}-${branch}:latest       
+  - apiVersion: v1
+    kind: BuildConfig
+    metadata:
+      name: ${name}-${branch} 
+    spec:
+      source: 
+        git:
+          uri: http://hit.tsoftlatam.com:3003/sre/nodejs-teom.git
+          ref: ${branch}
+        sourceSecret:
+          name: gitlabnodejsteom
+      output:
+        to:
+          kind: ImageStreamTag
+          name: ${name}-${branch}:latest
+      strategy:
+        dockerStrategy:
+          dockerfilePath: Dockerfile
+      triggers:
+        - type: ConfigChange
+parameters:
+- displayName: Nombre de la Aplicación
+  required: true
+  name: name
+  value: nodejs-teom-docker
+- displayName: Rama de la Aplicación
+  required: true
+  name: branch
+  value: develop
