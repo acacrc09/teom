@@ -1,4 +1,3 @@
-const indicatorsMock = require('../utils/moks/indicators');
 const MongoLib = require("../lib/mongo");
 
 class IndicatorsSrevices {
