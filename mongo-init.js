@@ -1,7 +1,7 @@
 db.createUser(
         {
-            user: "nebula",
-            pwd: "nebula",
+            user: "teom",
+            pwd: "teom*admin",
             roles: [
                 {
                     role: "readWrite",
