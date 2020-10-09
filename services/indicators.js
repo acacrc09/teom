@@ -1,8 +1,8 @@
-const MongoLib = require("../lib/mongo");
+const MongoLib = require('../lib/mongo');
 
 class IndicatorsSrevices {
   constructor() {
-    this.collection = "indicator";
+    this.collection = 'indicator';
     this.mongoDB = new MongoLib();
   }
 
@@ -35,14 +35,10 @@ class IndicatorsSrevices {
       body
     );
     return updateIndicatorId;
-
   }
 
   async delete({ id }) {
-    const deletedIndicatorId = await this.mongoDB.delete(
-      this.collection,
-      id
-    );
+    const deletedIndicatorId = await this.mongoDB.delete(this.collection, id);
     return deletedIndicatorId;
   }
 }
