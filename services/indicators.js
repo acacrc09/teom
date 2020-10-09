@@ -26,7 +26,6 @@ class IndicatorsSrevices {
       result = await this.mongoDB.create(this.collection, body);
     }
     return result;
-    
   }
 
   async update({ id, body }) {
