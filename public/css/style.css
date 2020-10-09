@@ -4,8 +4,17 @@ body {
     font-family: 'Roboto';
 }
 
+.container {
+    padding-bottom: 50px;
+}
+
 .card {
     background: rgba(255, 255, 255, 0.5);
+}
+
+.card img {
+    width: 75%;
+    margin: 0 auto;
 }
 
 .card-header {
