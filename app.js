@@ -1,26 +1,31 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/views/index');
-var adminRouter = require('./routes/views/admin');
+const indexRouter = require('./routes/views/index');
+const adminRouter = require('./routes/views/admin');
+const indicatorsApiRouter = require('./routes/api/indicators');
 
-var app = express();
+// application
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// middlewares
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// routes
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
+app.use('/api/indicators', indicatorsApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

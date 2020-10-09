@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "827dad2a-59a2-4055-ab95-4d5a32753b61",
+		"name": "teom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Indicators",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{server}}/api/indicators",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"indicators"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Indicator",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{server}}/api/indicators/{{id}}",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"indicators",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create indicator",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Test\",\n    \"totalDividend\": 123456,\n    \"interestRate\": 1.23,\n    \"totalCost\": 1234.5,\n    \"image\": \"test.png\"\n}"
+				},
+				"url": {
+					"raw": "http://{{server}}/api/indicators",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"indicators"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create indicators",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"name\": \"Banco de Chile\",\n    \"totalDividend\": 298045,\n    \"interestRate\": 3.37,\n    \"totalCost\": 3113.87,\n    \"image\": \"https://d7nxjt1whovz0.cloudfront.net/marketplace/logos/divisions/banco-de-chile.png\"\n  },\n  {\n    \"name\": \"Banco de Creditos e Inversiones\",\n    \"totalDividend\": 303809,\n    \"interestRate\": 3.47,\n    \"totalCost\": 3174.1,\n    \"image\": \"https://s3.amazonaws.com/marketplace.comparaonline.com/marketplace//bci.png\"\n  },\n  {\n    \"name\": \"Banco Edwars\",\n    \"totalDividend\": 278282,\n    \"interestRate\": 2.71,\n    \"totalCost\": 2907.4,\n    \"image\": \"https://d7nxjt1whovz0.cloudfront.net/marketplace/logos/divisions/banco-edwards-citi.png\"\n  },\n  {\n    \"name\": \"Banco Falabella\",\n    \"totalDividend\": 323867,\n    \"interestRate\": 4.2,\n    \"totalCost\": 3383.65,\n    \"image\": \"https://d7nxjt1whovz0.cloudfront.net/marketplace/logos/divisions/banco-falabella.png\"\n  },\n  {\n    \"name\": \"Banco Estado\",\n    \"totalDividend\": 289888,\n    \"interestRate\": 2.9,\n    \"totalCost\": 3028.66,\n    \"image\": \"https://d7nxjt1whovz0.cloudfront.net/marketplace/logos/divisions/banco-estado.png\"\n  },\n  {\n    \"name\": \"Banco Security\",\n    \"totalDividend\": 312945,\n    \"interestRate\": 3.82,\n    \"totalCost\": 3269.54,\n    \"image\": \"https://d7nxjt1whovz0.cloudfront.net/marketplace/logos/divisions/banco-security.png\"\n  },\n  {\n    \"name\": \"BICE\",\n    \"totalDividend\": 328344,\n    \"interestRate\": 4.25,\n    \"totalCost\": 3430.43,\n    \"image\": \"https://d7nxjt1whovz0.cloudfront.net/marketplace/logos/divisions/scotiabank.png\"\n  },\n  {\n    \"name\": \"Consorcio\",\n    \"totalDividend\": 287118,\n    \"interestRate\": 3.4,\n    \"totalCost\": 2999.71,\n    \"image\": \"https://s3.amazonaws.com/marketplace.comparaonline.com/marketplace/logos/divisions/Consorcio.png\"\n  },\n  {\n    \"name\": \"Itaú\",\n    \"totalDividend\": 339355,\n    \"interestRate\": 4.63,\n    \"totalCost\": 3545.47,\n    \"image\": \"https://d7nxjt1whovz0.cloudfront.net/marketplace/logos/divisions/banco-itau.png\"\n  },\n  {\n    \"name\": \"Metlife\",\n    \"totalDividend\": 326125,\n    \"interestRate\": 4.3,\n    \"totalCost\": 3407.25,\n    \"image\": \"https://d7nxjt1whovz0.cloudfront.net/marketplace/logos/divisions/metlife.png\"\n  },\n  {\n    \"name\": \"Santander\",\n    \"totalDividend\": 301834,\n    \"interestRate\": 3.4,\n    \"totalCost\": 3153.46,\n    \"image\": \"https://d7nxjt1whovz0.cloudfront.net/marketplace/logos/divisions/banco-santander.png\"\n  },\n  {\n    \"name\": \"Scotiabank\",\n    \"totalDividend\": 306547,\n    \"interestRate\": 3.55,\n    \"totalCost\": 3202.7,\n    \"image\": \"https://d7nxjt1whovz0.cloudfront.net/marketplace/logos/divisions/scotiabank.png\"\n  }\n]"
+				},
+				"url": {
+					"raw": "http://{{server}}/api/indicators",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"indicators"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Indicator",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Test\",\n    \"totalDividend\": 654321,\n    \"interestRate\": 3.21,\n    \"totalCost\": 5432.1,\n    \"image\": \"test.png\"\n}"
+				},
+				"url": {
+					"raw": "http://{{server}}/api/indicators/{{id}}",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"indicators",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Indicator",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{server}}/api/indicators/{{id}}",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"indicators",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

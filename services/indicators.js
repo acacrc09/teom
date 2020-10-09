@@ -1,15 +1,51 @@
-const mock = require('../');
+const MongoLib = require("../lib/mongo");
 
 class IndicatorsSrevices {
-  constructor() {}
+  constructor() {
+    this.collection = "indicator";
+    this.mongoDB = new MongoLib();
+  }
 
-  get() {}
+  async getAll() {
+    const query = {};
+    const indicators = await this.mongoDB.getAll(this.collection, query);
 
-  create() {}
+    return indicators || [];
+  }
 
-  update() {}
+  async get({ id }) {
+    const indicator = await this.mongoDB.get(this.collection, id);
+    return indicator || {};
+  }
 
-  delete() {}
+  async create({ body }) {
+    let result;
+    if (Array.isArray(body)) {
+      result = await this.mongoDB.createAll(this.collection, body);
+    } else {
+      result = await this.mongoDB.create(this.collection, body);
+    }
+    return result;
+    
+  }
+
+  async update({ id, body }) {
+    const updateIndicatorId = await this.mongoDB.update(
+      this.collection,
+      id,
+      body
+    );
+    return updateIndicatorId;
+
+  }
+
+  async delete({ id }) {
+    const deletedIndicatorId = await this.mongoDB.delete(
+      this.collection,
+      id
+    );
+    return deletedIndicatorId;
+  }
 }
 
 module.exports = IndicatorsSrevices;
