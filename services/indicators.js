@@ -20,8 +20,14 @@ class IndicatorsSrevices {
   }
 
   async create({ body }) {
-    const createIndicatorId = await this.mongoDB.create(this.collection, body);
-    return createIndicatorId;
+    let result;
+    if (Array.isArray(body)) {
+      result = await this.mongoDB.createAll(this.collection, body);
+    } else {
+      result = await this.mongoDB.create(this.collection, body);
+    }
+    return result;
+    
   }
 
   async update({ id, body }) {
