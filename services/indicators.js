@@ -1,31 +1,62 @@
 const indicatorsMock = require('../utils/moks/indicators');
+const MongoLib = require("../lib/mongo");
 const _ = require('lodash');
 
 class IndicatorsSrevices {
-  constructor() {}
-
-  getAll() {
-    return Promise.resolve({ indicators: indicatorsMock });
+  constructor() {
+    this.collection = "indicator";
+    this.mongoDB = new MongoLib();
   }
 
-  get({ id }) {
-    return Promise.resolve({ indicator: _.find(indicatorsMock, { id }) });
+  async getAll() {
+    const query = {};
+    const indicators = await this.mongoDB.getAll(this.collection, query);
+
+    return indicators || [];
+    //return Promise.resolve({ indicators: indicatorsMock });
   }
 
-  create({ body }) {
+  async get({ id }) {
+    const indicator = await this.mongoDB.get(this.collection, id);
+    return indicator || {};
+    //return Promise.resolve({ indicator: _.find(indicatorsMock, { id }) });
+  }
+
+  async create({ body }) {
     console.log('llego');
-    return Promise.resolve({ newIndicator: body });
+    
+    const createIndicatorId = await this.mongoDB.create(this.collection, body);
+
+    return createIndicatorId;
+
+    //return Promise.resolve({ newIndicator: body });
   }
 
-  update({ id, body }) {
-    return Promise.resolve({
-      newIndicator: body,
-      oldIndicator: _.find(indicatorsMock, { id }),
-    });
+  async update({ id, body }) {
+
+    const updateIndicatorId = await this.mongoDB.update(
+      this.collection,
+      id,
+      body
+    );
+    return updateIndicatorId;
+    
+    //return Promise.resolve({
+    //  newIndicator: body,
+    //  oldIndicator: _.find(indicatorsMock, { id }),
+    //});
   }
 
-  delete({ id }) {
-    return Promise.resolve({ oldIndicator: _.find(indicatorsMock, { id }) });
+  async delete({ id }) {
+
+    const deletedIndicatorId = await this.mongoDB.delete(
+      this.collection,
+      id
+    );
+
+    return deletedIndicatorId;
+
+    //return Promise.resolve({ oldIndicator: _.find(indicatorsMock, { id }) });
   }
 }
 
