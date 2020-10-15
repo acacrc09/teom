@@ -1,4 +1,6 @@
+const _ = require('lodash');
 const MongoLib = require('../lib/mongo');
+const fetchData = require('../lib/rankia');
 
 class IndicatorsSrevices {
   constructor() {
@@ -6,10 +8,9 @@ class IndicatorsSrevices {
     this.mongoDB = new MongoLib();
   }
 
-  async getAll() {
+  async getAll({ total, initial, term }) {
     const query = {};
     const indicators = await this.mongoDB.getAll(this.collection, query);
-
     return indicators || [];
   }
 
@@ -20,8 +21,9 @@ class IndicatorsSrevices {
 
   async create({ body }) {
     let result;
-    if (Array.isArray(body)) {
-      result = await this.mongoDB.createAll(this.collection, body);
+    if (_.isEmpty(body)) {
+      const bodyRankia = await fetchData();
+      result = await this.mongoDB.createAll(this.collection, bodyRankia);
     } else {
       result = await this.mongoDB.create(this.collection, body);
     }

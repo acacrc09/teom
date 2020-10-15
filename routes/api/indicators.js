@@ -6,7 +6,12 @@ const indicatorsServices = new IndicatorsServices();
 
 router.get('/', async (req, res, next) => {
   try {
-    const indicators = await indicatorsServices.getAll();
+    const { total, initial, term } = req.query;
+    const indicators = await indicatorsServices.getAll({
+      total,
+      initial,
+      term,
+    });
     res.status(200).json(indicators);
   } catch (err) {
     next(err);
