@@ -6,11 +6,11 @@ const indicatorsServices = new IndicatorsServices();
 
 router.get('/', async (req, res, next) => {
   try {
-    const { total, initial, term } = req.query;
+    const { value, initial, years } = req.query;
     const indicators = await indicatorsServices.getAll({
-      total,
+      value,
       initial,
-      term,
+      years,
     });
     res.status(200).json(indicators);
   } catch (err) {
@@ -21,7 +21,13 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
-    const indicator = await indicatorsServices.get({ id });
+    const { value, initial, years } = req.query;
+    const indicator = await indicatorsServices.get({
+      id,
+      value,
+      initial,
+      years,
+    });
     res.status(200).json(indicator);
   } catch (err) {
     next(err);

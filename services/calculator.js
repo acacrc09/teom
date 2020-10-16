@@ -1,4 +1,8 @@
 /*
+    ################################################################
+    ###### Los montos de entrada deben venir expresados en UF ######
+    ################################################################
+
     Paso 1: Calculo de tasa de interes mensual
 
     Tm = (1 + Ta / 100)^(1/12) - 1
@@ -43,10 +47,13 @@
     Cm = Cuota Mensual
     n = Plazo en numero de cuotas
 
+    Paso 6: Calculo de valores en pesos
+
+    ---- valores en pesos
 
 */
 
-const getMonthlyFee = ({ rate: Ta, value: Vp, initial: p, years: a }) => {
+const calculateCredit = ({ rate: Ta, value: Vp, initial: p, years: a, uf }) => {
   // Tasa de interes mensual
   const Tm = Math.pow(1 + Ta / 100, 1 / 12) - 1;
   // Numero de cuotas
@@ -57,11 +64,28 @@ const getMonthlyFee = ({ rate: Ta, value: Vp, initial: p, years: a }) => {
   const Cm = K * Tm * (Math.pow(1 + Tm, n) / (Math.pow(1 + Tm, n) - 1));
   // Costo total
   const Ct = Cm * n;
+  // Cuota Mensual en pesos
+  const monthlyCost = calculateUfPesos(Number(Cm.toFixed(2)), uf);
+  // Cuota Mensual en UF
+  const monthlyCostUf = Number(Cm.toFixed(2));
+  // Cuota Mensual en pesos
+  const totalCost = calculateUfPesos(Number(Ct.toFixed(2)), uf);
+  // Cuota Mensual en UF
+  const totalCostUf = Number(Ct.toFixed(2));
+  // Valor del credito en pesos
+  const loanValueUf = calculateUfPesos(K, uf);
+  // Valor del credito en UF
+  const loanValue = K;
   return {
-    monthlyCost: Number(Cm.toFixed(2)),
-    totalCost: Number(Ct.toFixed(2)),
-    loanValue: K,
+    monthlyCost,
+    monthlyCostUf,
+    totalCost,
+    totalCostUf,
+    loanValue,
+    loanValueUf,
   };
 };
 
-getMonthlyFee({ rate: 2.15, value: 6000, initial: 20, years: 25 });
+const calculateUfPesos = (mount, uf) => Math.round(mount * uf);
+
+module.exports = { calculateCredit, calculateUfPesos };
