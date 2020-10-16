@@ -25,6 +25,8 @@ services:
   mongodb:
     image: 'mongo:latest'
     hostname: 'mongo'
+    ports:
+      - '27017:27017'
     volumes:
       - 'mongodb-data:/data/db'
     environment:
