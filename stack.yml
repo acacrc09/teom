@@ -30,6 +30,7 @@ services:
     environment:
       - 'MONGO_INITDB_ROOT_USERNAME=teom'
       - 'MONGO_INITDB_ROOT_PASSWORD=teom*admin'
+      - 'MONGO_INITDB_DATABASE=indicators'
     networks:
       - 'network'
 networks:

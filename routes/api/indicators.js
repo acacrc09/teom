@@ -1,12 +1,17 @@
 const express = require('express');
-const IndicatorsSrevices = require('../../services/indicators');
+const IndicatorsServices = require('../../services/indicators');
 
 const router = express.Router();
-const indicatorsSrevices = new IndicatorsSrevices();
+const indicatorsServices = new IndicatorsServices();
 
 router.get('/', async (req, res, next) => {
   try {
-    const indicators = await indicatorsSrevices.getAll();
+    const { value, initial, years } = req.query;
+    const indicators = await indicatorsServices.getAll({
+      value,
+      initial,
+      years,
+    });
     res.status(200).json(indicators);
   } catch (err) {
     next(err);
@@ -16,7 +21,13 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
-    const indicator = await indicatorsSrevices.get({ id });
+    const { value, initial, years } = req.query;
+    const indicator = await indicatorsServices.get({
+      id,
+      value,
+      initial,
+      years,
+    });
     res.status(200).json(indicator);
   } catch (err) {
     next(err);
@@ -26,7 +37,7 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const { body } = req;
-    const indicator = await indicatorsSrevices.create({ body });
+    const indicator = await indicatorsServices.create({ body });
     res.status(201).json(indicator);
   } catch (err) {
     next(err);
@@ -37,7 +48,7 @@ router.put('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
     const { body } = req;
-    const indicator = await indicatorsSrevices.update({ body, id });
+    const indicator = await indicatorsServices.update({ body, id });
     res.status(200).json(indicator);
   } catch (err) {
     next(err);
@@ -47,7 +58,7 @@ router.put('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
-    const indicator = await indicatorsSrevices.delete({ id });
+    const indicator = await indicatorsServices.delete({ id });
     res.status(200).json(indicator);
   } catch (err) {
     next(err);
