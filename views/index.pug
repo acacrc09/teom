@@ -30,8 +30,9 @@ block content
                     div.col-sm-3.p-2
                         div.card
                             img(src=item.image)
-                            div.card-body
+                            div.card-body(style="height: 150px")
                                 h5=item.name
+                                h6=item.type
                                 | &nbsp;
                                 .badge.badge-secondary=item.rate+'%'                               
                             ul.list-group
