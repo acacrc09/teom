@@ -4,6 +4,19 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+// Add this to the VERY top of the first file loaded in your app
+const apm = require('elastic-apm-node').start({
+    // Override service name from package.json
+    // Allowed characters: a-z, A-Z, 0-9, -, _, and space
+    serviceName: 'nodejs-teom',
+
+    // Use if APM Server requires a token
+    secretToken: '',
+
+    // Set custom APM Server URL (default: http://localhost:8200)
+    serverUrl: 'http://apm-server-teom.apps.okd.soft1.xyz/',
+})
+
 const indexRouter = require('./routes/views/index');
 const adminRouter = require('./routes/views/admin');
 const indicatorsApiRouter = require('./routes/api/indicators');
@@ -28,19 +41,19 @@ app.use('/admin', adminRouter);
 app.use('/api/indicators', indicatorsApiRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
+app.use(function(req, res, next) {
+    next(createError(404));
 });
 
 // error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;
