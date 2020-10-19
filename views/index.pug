@@ -4,16 +4,16 @@ block content
     .container
         form.jumbotron(method="POST", action="")
             .form-row
-                .col
+                .col-12.col-sm-4
                     label Valor de la propiedad (UF)
                     input.form-control(name="value", value=req.value)
-                .col
+                .col-12.col-sm-4
                     label Porcentaje de Pie (%)
                     select.form-control(name="initial")
                         option(selected=(req.initial == 10))=10
                         option(selected=(req.initial == 15))=15
                         option(selected=(req.initial == 20))=20
-                .col
+                .col-12.col-sm-4
                     label Años plazo
                     select.form-control(name="years")
                         option(selected=(req.years == 30))=30
