@@ -10,12 +10,24 @@ pipeline{
         checkout scm
       }
     }
+    stage ('Actualizar Agente NodeJS') {
+      steps{
+        try {
+          sh '''
+            npm install -g n
+            node -v
+            n latest  
+          '''
+        } catch (exc) {
+            echo 'Falla la actualización de NodeJS'
+            throw
+        }
+      },
+      failOnError: false      
+    }
     stage ('Instalar dependencias'){
       steps{
         sh '''
-          npm install -g n
-          node -v
-          n latest
           npm install --verbose -d     
         '''
       }
