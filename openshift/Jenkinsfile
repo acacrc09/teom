@@ -13,7 +13,9 @@ pipeline{
     stage ('Instalar dependencias'){
       steps{
         sh '''
+          npm install -g n
           node -v
+          n latest
           npm install --verbose -d     
         '''
       }
