@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -7,8 +9,8 @@ const logger = require('morgan');
 const indexRouter = require('./routes/views/index');
 const adminRouter = require('./routes/views/admin');
 const indicatorsApiRouter = require('./routes/api/indicators');
+const apm = require('elastic-apm-node').start()
 
-const apm = require('./lib/apm');
 // application
 const app = express();
 
@@ -30,6 +32,7 @@ app.use('/api/indicators', indicatorsApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+    apm.captureError(createError(404))
     next(createError(404));
 });
 

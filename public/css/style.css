@@ -44,6 +44,7 @@ body {
 
 nav {
     background: linear-gradient(90deg, #e2051b, #a3191c);
+    color: white;
 }
 
 nav img {
