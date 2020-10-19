@@ -1,71 +1,67 @@
-pipeline{
-   agent {
+pipeline {
+  agent {
     node {
       label 'nodejs'
     }
   }
-  stages{
-    stage ('Checkout codigo fuente'){
-      steps{
+  stages {
+    stage ('Checkout codigo fuente') {
+      steps {
         checkout scm
       }
     }
-    stage ('Actualizar Agente NodeJS') {
-      steps{
-        try {
+    /*stage ('Actualizar Agente NodeJS') {
+      steps {
           sh '''
             npm install -g n
             node -v
-            n latest  
+            n latest
           '''
-        } catch (exc) {
-            echo 'Falla la actualización de NodeJS'
-        }
-      }    
-    }
-    stage ('Instalar dependencias'){
-      steps{
+      }
+    }*/
+    stage ('Instalar dependencias') {
+      steps {
         sh '''
-          npm install --verbose -d     
+          npm install --verbose -d
         '''
       }
     }
-    stage ('Pruebas unitarias'){
-      steps{
+    stage ('Pruebas unitarias') {
+      steps {
         sh '''
-          npm run unit          
+          npm run unit
         '''
       }
     }
-    stage ('Inspección con Sonarqube'){
-      steps{
+    stage ('Inspección con Sonarqube') {
+      steps {
         sh '''
-          npm run sonar          
+          npm run sonar
         '''
       }
     }
-    stage ('Desplegar') { 
-      steps{
+    stage ('Desplegar') {
+      steps {
         script {
           openshift.withCluster() {
             openshift.withProject('teom') {
-              openshift.selector("bc", "nodejs-teom-develop").startBuild("--from-dir=./", "--wait=true", "--follow", "--loglevel=8")
+              openshift.selector('bc', 'nodejs-teom-develop').startBuild('--from-dir=./', '--wait=true', '--follow', '--loglevel=8')
             }
           }
         }
       }
     }
-    stage ('Probar WEB con Nightwatch') { 
-      steps{
+    stage ('Probar WEB con Nightwatch') {
+      steps {
         sh '''
-          npm run nightwatch          
+          npm run nightwatch
         '''
       }
     }
-    stage ('Probar API con Newman') { 
-      steps{
+    stage ('Probar API con Newman') {
+      steps {
         sh '''
-          npm run newman          
+          npm run newman
         '''
       }
     }
