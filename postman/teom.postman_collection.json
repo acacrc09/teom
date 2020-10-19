@@ -143,7 +143,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Test\",\n    \"totalDividend\": 654321,\n    \"interestRate\": 3.21,\n    \"totalCost\": 5432.1,\n    \"image\": \"test.png\"\n}"
+					"raw": "{\n    \"image\": \"test2.png\",\n    \"type\": \"Test Tipo 2\",\n    \"name\": \"Banco Test 2\",\n    \"rate\": 3.21,\n    \"term\": 21,\n    \"cae\": 2.1\n}"
 				},
 				"url": {
 					"raw": "http://{{server}}/api/indicators/{{id}}",
