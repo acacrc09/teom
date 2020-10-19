@@ -1,39 +1,38 @@
 {
-  "name": "nodejs-teom",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www",
-    "start:dev": "nodemon ./bin/www",
-    "unit": "mocha test/example.test.js",
-    "sonar": "sonar-scanner -Dsonar.projectKey=teom -Dsonar.sources=. -Dsonar.host.url=http://sonarqube-poc-angular.apps.okd.soft1.xyz -Dsonar.login=d5ec678c0439f82a0b508f6e823bf74cee8095a8 -Dsonar.scm.forceReloadAll=true -Dsonar.qualitygate.wait=true",
-    "newman": "newman run test/Atlassian.postman_collection.json",
-    "selenium": "jest",
-    "test": "nodemon ./lib/web-scraping/comparaOnline"
-  },
-  "dependencies": {
-    "axios": "^0.20.0",
-    "cheerio": "^1.0.0-rc.3",
-    "cookie-parser": "~1.4.5",
-    "debug": "~4.2.0",
-    "dotenv": "^8.2.0",
-    "elastic-apm-node": "^3.7.0",
-    "express": "~4.17.1",
-    "http-errors": "~1.8.0",
-    "lodash": "^4.17.20",
-    "mongodb": "^3.6.2",
-    "morgan": "~1.10.0",
-    "pug": "^3.0.0"
-  },
-  "devDependencies": {
-    "chromedriver": "75.1.0",
-    "install": "0.13.0",
-    "jest": "24.9.0",
-    "mocha": "6.2.3",
-    "newman": "5.2.0",
-    "nodemon": "^2.0.4",
-    "npm": "^6.14.8",
-    "selenium-webdriver": "^4.0.0-alpha.7",
-    "sonar-scanner": "3.1.0"
-  }
+    "name": "nodejs-teom",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node ./bin/www",
+        "start:dev": "nodemon ./bin/www",
+        "unit": "jest test/jest",
+        "sonar": "sonar-scanner -Dsonar.projectKey=teom -Dsonar.sources=. -Dsonar.host.url=http://sonarqube-poc-angular.apps.okd.soft1.xyz -Dsonar.login=d5ec678c0439f82a0b508f6e823bf74cee8095a8 -Dsonar.scm.forceReloadAll=true -Dsonar.qualitygate.wait=true",
+        "newman": "newman run test/postman",
+        "nightwatch": "nightwatch"
+    },
+    "dependencies": {
+        "axios": "^0.20.0",
+        "cheerio": "^1.0.0-rc.3",
+        "cookie-parser": "~1.4.5",
+        "debug": "~4.2.0",
+        "dotenv": "^8.2.0",
+        "elastic-apm-node": "^3.7.0",
+        "express": "~4.17.1",
+        "http-errors": "~1.8.0",
+        "lodash": "^4.17.20",
+        "mongodb": "^3.6.2",
+        "morgan": "~1.10.0",
+        "pug": "^3.0.0"
+    },
+    "devDependencies": {
+        "chromedriver": "^86.0.0",
+        "install": "0.13.0",
+        "jest": "24.9.0",
+        "newman": "5.2.0",
+        "nightwatch": "^1.4.3",
+        "nodemon": "^2.0.4",
+        "npm": "^6.14.8",
+        "selenium-webdriver": "^4.0.0-alpha.7",
+        "sonar-scanner": "3.1.0"
+    }
 }
