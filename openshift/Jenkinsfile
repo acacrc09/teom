@@ -20,7 +20,6 @@ pipeline{
           '''
         } catch (exc) {
             echo 'Falla la actualización de NodeJS'
-            throw
         }
       },
       failOnError: false      
