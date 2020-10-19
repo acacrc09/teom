@@ -21,8 +21,7 @@ pipeline{
         } catch (exc) {
             echo 'Falla la actualización de NodeJS'
         }
-      },
-      failOnError: false      
+      }    
     }
     stage ('Instalar dependencias'){
       steps{
