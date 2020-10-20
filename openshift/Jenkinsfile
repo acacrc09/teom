@@ -42,6 +42,13 @@ pipeline {
         '''
       }
     }
+    stage ('Publicar en Nexus') {
+      steps {
+        sh '''
+          npm publish
+        '''
+      }
+    }
     stage ('Desplegar') {
       steps {
         script {
