@@ -5,17 +5,17 @@
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [{
-            "name": "Create indicator",
+            "name": "Create indicators",
             "request": {
                 "method": "POST",
                 "header": [{
                     "key": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
+                    "type": "text",
+                    "value": "application/json"
                 }],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\n    \"image\": \"test.png\",\n    \"type\": \"Test Tipo\",\n    \"name\": \"Banco Test\",\n    \"rate\": 1.23,\n    \"term\": 12,\n    \"cae\": 1.2\n}"
+                    "raw": ""
                 },
                 "url": {
                     "raw": "http://{{server}}/api/indicators",
@@ -32,17 +32,17 @@
             "response": []
         },
         {
-            "name": "Create indicators",
+            "name": "Create indicator",
             "request": {
                 "method": "POST",
                 "header": [{
                     "key": "Content-Type",
-                    "type": "text",
-                    "value": "application/json"
+                    "value": "application/json",
+                    "type": "text"
                 }],
                 "body": {
                     "mode": "raw",
-                    "raw": ""
+                    "raw": "{\n    \"image\": \"test.png\",\n    \"type\": \"Test Tipo\",\n    \"name\": \"Banco Test\",\n    \"rate\": 1.23,\n    \"term\": 12,\n    \"cae\": 1.2\n}"
                 },
                 "url": {
                     "raw": "http://{{server}}/api/indicators",
