@@ -10,16 +10,7 @@ pipeline {
         checkout scm
       }
     }
-    /*stage ('Actualizar Agente NodeJS') {
-      steps {
-          sh '''
-            npm install -g n
-            node -v
-            n latest
-          '''
-      }
-    }*/
-    stage ('Instalar dependencias') {
+    /*stage ('Instalar dependencias') {
       steps {
         sh '''
           npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-proxy
@@ -66,7 +57,7 @@ pipeline {
           npm run newman
         '''
       }
-    }
+    }*/
     stage ('Smoke Test') {
       steps {
         sh '''
