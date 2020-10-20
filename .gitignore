@@ -3,3 +3,9 @@ node_modules/
 
 # Environments
 .env
+
+# Test
+tests_output/
+
+# Logs
+*.Log
