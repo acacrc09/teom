@@ -1,59 +1,74 @@
-pipeline{
-   agent {
+pipeline {
+  agent {
     node {
       label 'nodejs'
     }
   }
-  stages{
-    stage ('Checkout codigo fuente'){
-      steps{
+  stages {
+    stage ('Checkout codigo fuente') {
+      steps {
         checkout scm
       }
     }
-    stage ('Instalar dependencias'){
-      steps{
+    stage ('Instalar dependencias') {
+      steps {
         sh '''
-          node -v
-          npm install --verbose -d     
+          npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-proxy
+          npm install --verbose -d
+          npm publish
         '''
       }
     }
-    stage ('Pruebas unitarias'){
-      steps{
+    stage ('Pruebas unitarias') {
+      steps {
         sh '''
-          npm run unit          
+          npm run unit
         '''
       }
     }
-    stage ('Inspección con Sonarqube'){
-      steps{
+    stage ('Inspección con Sonarqube') {
+      steps {
         sh '''
-          npm run sonar          
+          npm run sonar
         '''
       }
     }
-    stage ('Desplegar') { 
-      steps{
+    stage ('Publicar en Nexus') {
+      steps {
+        sh '''
+          npm publish
+        '''
+      }
+    }
+    stage ('Desplegar') {
+      steps {
         script {
           openshift.withCluster() {
             openshift.withProject('teom') {
-              openshift.selector("bc", "nodejs-teom-develop").startBuild("--from-dir=./", "--wait=true", "--follow", "--loglevel=8")
+              openshift.selector('bc', 'nodejs-teom-develop').startBuild('--from-dir=./', '--wait=true', '--follow', '--loglevel=8')
             }
           }
         }
       }
     }
-    stage ('Probar API con Newman') { 
-      steps{
+    stage ('Probar API con Newman') {
+      steps {
         sh '''
-          npm run newman          
+          npm run newman
         '''
       }
     }
-    stage ('Probar WEB con Selenium') { 
-      steps{
+    stage ('Smoke Test') {
+      steps {
         sh '''
-          npm run selenium          
+          npm run performance
+        '''
+      }
+    }
+    stage ('Probar WEB con Nightwatch') {
+      steps {
+        sh '''
+          npm run nightwatch
         '''
       }
     }

@@ -1,185 +1,176 @@
 {
-	"info": {
-		"_postman_id": "827dad2a-59a2-4055-ab95-4d5a32753b61",
-		"name": "teom",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Get Indicators",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://{{server}}/api/indicators?value={{value}}&initial={{initial}}&years={{years}}",
-					"protocol": "http",
-					"host": [
-						"{{server}}"
-					],
-					"path": [
-						"api",
-						"indicators"
-					],
-					"query": [
-						{
-							"key": "value",
-							"value": "{{value}}"
-						},
-						{
-							"key": "initial",
-							"value": "{{initial}}"
-						},
-						{
-							"key": "years",
-							"value": "{{years}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Indicator",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://{{server}}/api/indicators/{{id}}?value={{value}}&initial={{initial}}&years={{years}}",
-					"protocol": "http",
-					"host": [
-						"{{server}}"
-					],
-					"path": [
-						"api",
-						"indicators",
-						"{{id}}"
-					],
-					"query": [
-						{
-							"key": "value",
-							"value": "{{value}}"
-						},
-						{
-							"key": "initial",
-							"value": "{{initial}}"
-						},
-						{
-							"key": "years",
-							"value": "{{years}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create indicator",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"image\": \"test.png\",\n    \"type\": \"Test Tipo\",\n    \"name\": \"Banco Test\",\n    \"rate\": 1.23,\n    \"term\": 12,\n    \"cae\": 1.2\n}"
-				},
-				"url": {
-					"raw": "http://{{server}}/api/indicators",
-					"protocol": "http",
-					"host": [
-						"{{server}}"
-					],
-					"path": [
-						"api",
-						"indicators"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create indicators",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://{{server}}/api/indicators",
-					"protocol": "http",
-					"host": [
-						"{{server}}"
-					],
-					"path": [
-						"api",
-						"indicators"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Indicator",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"image\": \"test2.png\",\n    \"type\": \"Test Tipo 2\",\n    \"name\": \"Banco Test 2\",\n    \"rate\": 3.21,\n    \"term\": 21,\n    \"cae\": 2.1\n}"
-				},
-				"url": {
-					"raw": "http://{{server}}/api/indicators/{{id}}",
-					"protocol": "http",
-					"host": [
-						"{{server}}"
-					],
-					"path": [
-						"api",
-						"indicators",
-						"{{id}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Indicator",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://{{server}}/api/indicators/{{id}}",
-					"protocol": "http",
-					"host": [
-						"{{server}}"
-					],
-					"path": [
-						"api",
-						"indicators",
-						"{{id}}"
-					]
-				}
-			},
-			"response": []
-		}
-	],
-	"protocolProfileBehavior": {}
+    "info": {
+        "_postman_id": "827dad2a-59a2-4055-ab95-4d5a32753b61",
+        "name": "teom",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [{
+            "name": "Create indicators",
+            "request": {
+                "method": "POST",
+                "header": [{
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                }],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "http://{{server}}/api/indicators",
+                    "protocol": "http",
+                    "host": [
+                        "{{server}}"
+                    ],
+                    "path": [
+                        "api",
+                        "indicators"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create indicator",
+            "request": {
+                "method": "POST",
+                "header": [{
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                }],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"image\": \"test.png\",\n    \"type\": \"Test Tipo\",\n    \"name\": \"Banco Test\",\n    \"rate\": 1.23,\n    \"term\": 12,\n    \"cae\": 1.2\n}"
+                },
+                "url": {
+                    "raw": "http://{{server}}/api/indicators",
+                    "protocol": "http",
+                    "host": [
+                        "{{server}}"
+                    ],
+                    "path": [
+                        "api",
+                        "indicators"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Indicators",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://{{server}}/api/indicators?value={{value}}&initial={{initial}}&years={{years}}",
+                    "protocol": "http",
+                    "host": [
+                        "{{server}}"
+                    ],
+                    "path": [
+                        "api",
+                        "indicators"
+                    ],
+                    "query": [{
+                            "key": "value",
+                            "value": "{{value}}"
+                        },
+                        {
+                            "key": "initial",
+                            "value": "{{initial}}"
+                        },
+                        {
+                            "key": "years",
+                            "value": "{{years}}"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Indicator",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://{{server}}/api/indicators/{{id}}?value={{value}}&initial={{initial}}&years={{years}}",
+                    "protocol": "http",
+                    "host": [
+                        "{{server}}"
+                    ],
+                    "path": [
+                        "api",
+                        "indicators",
+                        "{{id}}"
+                    ],
+                    "query": [{
+                            "key": "value",
+                            "value": "{{value}}"
+                        },
+                        {
+                            "key": "initial",
+                            "value": "{{initial}}"
+                        },
+                        {
+                            "key": "years",
+                            "value": "{{years}}"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Update Indicator",
+            "request": {
+                "method": "PUT",
+                "header": [{
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                }],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"image\": \"test2.png\",\n    \"type\": \"Test Tipo 2\",\n    \"name\": \"Banco Test 2\",\n    \"rate\": 3.21,\n    \"term\": 21,\n    \"cae\": 2.1\n}"
+                },
+                "url": {
+                    "raw": "http://{{server}}/api/indicators/{{id}}",
+                    "protocol": "http",
+                    "host": [
+                        "{{server}}"
+                    ],
+                    "path": [
+                        "api",
+                        "indicators",
+                        "{{id}}"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Delete Indicator",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "http://{{server}}/api/indicators/{{id}}",
+                    "protocol": "http",
+                    "host": [
+                        "{{server}}"
+                    ],
+                    "path": [
+                        "api",
+                        "indicators",
+                        "{{id}}"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "protocolProfileBehavior": {}
 }
