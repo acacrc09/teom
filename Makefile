@@ -20,3 +20,5 @@ prune: ## Docker prune
 start: build init deploy ## Enable services
 
 stop: remove leave prune ## Disable services
+
+restart: stop start ## Restart services
