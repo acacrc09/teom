@@ -15,11 +15,10 @@ pipeline {
         sh '''
           npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-proxy
           npm install --verbose -d
-          npm publish
         '''
       }
     }
-    stage ('Pruebas unitarias') {
+    /*stage ('Pruebas unitarias') {
       steps {
         sh '''
           npm run unit
@@ -64,7 +63,7 @@ pipeline {
           npm run performance
         '''
       }
-    }
+    }*/
     stage ('Probar WEB con Nightwatch') {
       steps {
         sh '''
