@@ -26,7 +26,6 @@
         "pug": "^3.0.0"
     },
     "devDependencies": {
-        "chromedriver": "^86.0.0",
         "install": "0.13.0",
         "jest": "24.9.0",
         "newman": "^5.2.0",
