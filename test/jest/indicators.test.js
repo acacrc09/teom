@@ -8,7 +8,7 @@ const indicatorsServices = new IndicatorsServices();
     });
 });*/
 
-test('Probando API Indicators', () => {
+test('Probando API Indicators', async() => {
     let indicators = await indicatorsServices.getAll();
 
     expect(indicators).not.toHaveLength(0);
