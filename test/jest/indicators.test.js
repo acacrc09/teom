@@ -16,7 +16,7 @@ const indicatorsServices = new IndicatorsServices();
 });*/
 
 test('Probando API Indicators Dummy', async() => {
-    let rawdata = fs.readFileSync('../../public/dummy.json');
+    let rawdata = fs.readFileSync('./public/dummy.json');
     let items = JSON.parse(rawdata);
 
     expect(items).not.toHaveLength(0);
