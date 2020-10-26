@@ -57,7 +57,7 @@ pipeline {
         '''
       }
     }
-    stage ('Smoke Test') {
+    stage ('Smoke Test JMeter') {
       steps {
         sh '''
           npm run performance
@@ -67,7 +67,7 @@ pipeline {
     stage ('Probar WEB con Nightwatch') {
       steps {
         sh '''
-          npm run nightwatch
+          npm run unit
         '''
       }
     }

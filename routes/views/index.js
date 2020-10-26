@@ -22,4 +22,13 @@ router.all('/', async function(req, res) {
     });
 });
 
+router.all('/tarjeta', async function(req, res) {
+    res.render('tarjeta');
+});
+
+router.all('/credito', async function(req, res) {
+    res.render('credito');
+});
+
+
 module.exports = router;

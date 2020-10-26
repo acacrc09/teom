@@ -5,6 +5,7 @@ html
     base(href='../')
     link(rel='icon' href='images/favicon.ico')  
     link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css')
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
     link(rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto')
     link(rel='stylesheet' href='css/style.css')
   body
@@ -13,6 +14,19 @@ html
         a(href="./").col-2.col-sm-3 
           img(src='images/logo.png' alt="")
         h2='Portal de Portabilidad Financiera'
+    main.container
+      .card
+        .btn-group
+          a.btn.active.btn-secondary(href="./" alt="Hipotecario")
+            li.fa.fa-home.fa-2x
+            span &nbsp;Hipotecario
+          a.btn.btn-secondary(href="./tarjeta" alt="Tarjetas")
+            li.fa.fa-credit-card.fa-2x
+            span &nbsp;Tarjetas de Credito
+          a.btn.btn-secondary(href="./credito" alt="Consumo")
+            li.fa.fa-credit-card.fa-2x
+            span &nbsp;Credito Consumo  
+      
     block content
     footer.fixed-bottom.p-2
       span © TSOFT SpA - Todos los derechos Reservados tsoft.
