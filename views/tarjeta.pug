@@ -1,3 +1,28 @@
 extends layout
 
 block content
+    .container
+        form(action="")
+            .p-5.card
+                h2="Paso 1: Identificación"
+                hr
+                .form-group
+                    label="RUT (Sin puntos y sin guión)"
+                    input.form-control(placeholder='Ejemplo: 16123456k')
+                .form-group
+                    label="N° documento o serie de cédula"
+                    input.form-control(placeholder='Ingresa # documento')
+            .p-5.card.my-5
+                h2="Paso 2: Datos de contacto"
+                hr
+                .form-group
+                    label="Nombre"
+                    input.form-control(placeholder='Ingrese su nombre')
+                .form-group
+                    label="Apellido Paterno"
+                    input.form-control(placeholder='Ingrese su apellido paterno')
+                .form-group
+                    label="Apellido Materno"
+                    input.form-control(placeholder='Ingrese su apellido materno')
+            
+            button.btn.btn-primary(type=submit) Ingresar
