@@ -18,7 +18,7 @@ pipeline {
         '''
       }
     }
-    /*stage ('Pruebas unitarias') {
+    stage ('Pruebas unitarias') {
       steps {
         sh '''
           npm run unit
@@ -63,7 +63,7 @@ pipeline {
           npm run performance
         '''
       }
-    }*/
+    }
     stage ('Probar WEB con Nightwatch') {
       steps {
         sh '''
