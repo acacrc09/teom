@@ -1,5 +1,5 @@
 const express = require('express');
-//var fs = require('fs');
+
 const IndicatorsServices = require('../../services/indicators')
 const indicatorsServices = new IndicatorsServices();
 const router = express.Router();
@@ -12,10 +12,8 @@ sorting = function(a, b) {
 };
 
 router.all('/', async function(req, res) {
-    //let rawdata = fs.readFileSync('./public/dummy.json');
-    //let items = JSON.parse(rawdata);
     let items = await indicatorsServices.getAll(req.body);
-    console.log(items);
+    //console.log(items);
     res.render('index', {
         items: items.filter((item) => item.rate > 0).sort(sorting),
         req: req.body
