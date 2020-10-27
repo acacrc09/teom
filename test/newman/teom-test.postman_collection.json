@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "0637c876-a24e-4f54-878e-a8a689336fa0",
+		"name": "teom-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Indicators",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{server}}/api/indicators?value={{value}}&initial={{initial}}&years={{years}}",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"indicators"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "{{value}}"
+						},
+						{
+							"key": "initial",
+							"value": "{{initial}}"
+						},
+						{
+							"key": "years",
+							"value": "{{years}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
