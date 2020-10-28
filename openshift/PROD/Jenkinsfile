@@ -1,0 +1,75 @@
+pipeline {
+  agent {
+    node {
+      label 'nodejs'
+    }
+  }
+  stages {
+    stage ('Checkout codigo fuente') {
+      steps {
+        checkout scm
+      }
+    }
+    stage ('Instalar dependencias') {
+      steps {
+        sh '''
+          npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-proxy
+          npm install --verbose -d
+        '''
+      }
+    }
+    stage ('Pruebas unitarias') {
+      steps {
+        sh '''
+          npm run unit
+        '''
+      }
+    }
+    stage ('Inspección con Sonarqube') {
+      steps {
+        sh '''
+          npm run sonar
+        '''
+      }
+    }
+    stage ('Publicar en Nexus') {
+      steps {
+        sh '''
+          npm publish
+        '''
+      }
+    }
+    stage ('Desplegar') {
+      steps {
+        script {
+          openshift.withCluster() {
+            openshift.withProject('teom') {
+              openshift.selector('bc', 'nodejs-teom-prod').startBuild('--from-dir=./', '--wait=true', '--follow', '--loglevel=8')
+            }
+          }
+        }
+      }
+    }
+    stage ('Probar API con Newman') {
+      steps {
+        sh '''
+          npm run newman
+        '''
+      }
+    }
+    stage ('Smoke Test JMeter') {
+      steps {
+        sh '''
+          npm run performance
+        '''
+      }
+    }
+    stage ('Probar WEB con Nightwatch') {
+      steps {
+        sh '''
+          npm run unit
+        '''
+      }
+    }
+  }
+}
