@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "827dad2a-59a2-4055-ab95-4d5a32753b61",
-		"name": "teom",
+		"_postman_id": "146560e9-a3ed-4de7-984f-5cd798bbc9fb",
+		"name": "teom-test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -29,68 +29,6 @@
 					"path": [
 						"api",
 						"indicators"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create indicators",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://{{server}}/api/indicators",
-					"protocol": "http",
-					"host": [
-						"{{server}}"
-					],
-					"path": [
-						"api",
-						"indicators"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Indicators",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://{{server}}/api/indicators?value={{value}}&initial={{initial}}&years={{years}}",
-					"protocol": "http",
-					"host": [
-						"{{server}}"
-					],
-					"path": [
-						"api",
-						"indicators"
-					],
-					"query": [
-						{
-							"key": "value",
-							"value": "{{value}}"
-						},
-						{
-							"key": "initial",
-							"value": "{{initial}}"
-						},
-						{
-							"key": "years",
-							"value": "{{years}}"
-						}
 					]
 				}
 			},
@@ -181,20 +119,33 @@
 			"response": []
 		},
 		{
-			"name": "Delete Indicators",
+			"name": "Get Indicators",
 			"request": {
-				"method": "DELETE",
+				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{server}}/api/indicators/all",
+					"raw": "http://{{server}}/api/indicators?value={{value}}&initial={{initial}}&years={{years}}",
 					"protocol": "http",
 					"host": [
 						"{{server}}"
 					],
 					"path": [
 						"api",
-						"indicators",
-						"all"
+						"indicators"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "{{value}}"
+						},
+						{
+							"key": "initial",
+							"value": "{{initial}}"
+						},
+						{
+							"key": "years",
+							"value": "{{years}}"
+						}
 					]
 				}
 			},
