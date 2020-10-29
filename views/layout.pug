@@ -18,14 +18,9 @@ html
       .card
         .btn-group
           each link in links
-            if link.url == current
-              a.btn.active.btn-secondary(href=link.url alt=link.label)
-                li.fa.fa-2x(class='fa-' + link.icon)
-                span=link.label
-            else
-              a.btn.btn-secondary(href=link.url alt=link.label)            
-                li.fa.fa-2x(class='fa-' + link.icon)
-                span=link.label
+            a.btn.btn-secondary(href=link.url alt=link.label class=(link.url == current?'active':''))
+              li.fa.fa-2x(class='fa-' + link.icon)
+              span=link.label
       
     block content
     footer.fixed-bottom.p-2
