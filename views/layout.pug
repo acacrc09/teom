@@ -20,18 +20,12 @@ html
           each link in links
             if link.url == current
               a.btn.active.btn-secondary(href=link.url alt=link.label)
-                li.fa.fa-2x(class='fa-' + link.icon).active
-                span=link.label
-            else
-              a.btn.btn-secondary(href=link.url alt=link.label)
                 li.fa.fa-2x(class='fa-' + link.icon)
                 span=link.label
-            //a.btn.btn-secondary(href="./tarjeta" alt="Tarjetas")
-            //  li.fa.fa-credit-card.fa-2x
-            //  span &nbsp;Portabilidad
-            //a.btn.btn-secondary(href="./credito" alt="Consumo")
-            //  li.fa.fa-credit-card.fa-2x
-            //  span &nbsp;Credito Consumo  
+            else
+              a.btn.btn-secondary(href=link.url alt=link.label)            
+                li.fa.fa-2x(class='fa-' + link.icon)
+                span=link.label
       
     block content
     footer.fixed-bottom.p-2
