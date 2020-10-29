@@ -12,13 +12,19 @@ sorting = function(a, b) {
 };
 
 router.all('/:path(|hipotecario|portabilidad|credito)', async function(req, res) {
+    let items;
     let path = (req.params.path == '' ? 'hipotecario' : req.params.path);
-    let items = await indicatorsServices.getAll(req.body);
-    //console.log(items);
+
+    switch (path) {
+        case 'hipotecario':
+            items = await indicatorsServices.getAll(req.body);
+            items = items.filter((item) => item.rate > 0).sort(sorting);
+    }
+
     res.render(path, {
-        items: items.filter((item) => item.rate > 0).sort(sorting),
+        items: items,
         req: req.body,
-        current: path
+        current: './' + path
     });
 });
 

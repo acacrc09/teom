@@ -18,7 +18,7 @@ html
       .card
         .btn-group
           each link in links
-            if link.url == './' + current
+            if link.url == current
               a.btn.active.btn-secondary(href=link.url alt=link.label)
                 li.fa.fa-2x(class='fa-' + link.icon).active
                 span=link.label
