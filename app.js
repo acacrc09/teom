@@ -25,6 +25,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Variable global para plantilla PUG/JADE.
+app.use(function(req, res, next) {
+    res.locals.links = [{ url: "./hipotecario", label: 'Hipotecario', icon: 'home' }, { url: "./portabilidad", label: 'Portabilidad', icon: 'money' }, { url: "./credito", label: 'Credito Consumo', icon: 'credit-card' }]
+    next();
+})
+
 // routes
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
