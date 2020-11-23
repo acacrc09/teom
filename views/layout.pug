@@ -17,15 +17,10 @@ html
     main.container
       .card
         .btn-group
-          a.btn.active.btn-secondary(href="./" alt="Hipotecario")
-            li.fa.fa-home.fa-2x
-            span &nbsp;Hipotecario
-          a.btn.btn-secondary(href="./tarjeta" alt="Tarjetas")
-            li.fa.fa-credit-card.fa-2x
-            span &nbsp;Portabilidad
-          a.btn.btn-secondary(href="./credito" alt="Consumo")
-            li.fa.fa-credit-card.fa-2x
-            span &nbsp;Credito Consumo  
+          each link in links
+            a.btn.btn-secondary(href=link.url alt=link.label class=(link.url == current?'active':''))
+              li.fa.fa-2x(class='fa-' + link.icon)
+              span=link.label
       
     block content
     footer.fixed-bottom.p-2
