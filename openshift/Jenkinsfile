@@ -12,7 +12,8 @@ pipeline {
     }
     stage ('Instalar dependencias') {
       steps {
-        sh '''          
+        sh '''   
+          //npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-proxy       
           npm install --verbose -d
         '''
       }
@@ -27,7 +28,7 @@ pipeline {
     stage ('Inspección con Sonarqube') {
       steps {
         sh '''
-          npm run sonar
+          //npm run sonar
         '''
       }
     }
