@@ -47,17 +47,15 @@ pipeline {
         }
       }
     }
-    stage ('Probar API con Newman') {
+    stage ('Probar API con Newman: npm run newman') {
       steps {
-        sh '''
-          npm run newman
+        sh '''          
         '''
       }
     }
-    stage ('Smoke Test JMeter') {
+    stage ('Smoke Test JMeter: npm run performance') {
       steps {
-        sh '''
-          npm run performance
+        sh '''          
         '''
       }
     }
