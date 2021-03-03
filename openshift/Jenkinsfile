@@ -59,8 +59,7 @@ pipeline {
     }
     stage ('Smoke Test JMeter: npm run performance') {
       steps {
-        sh '''
-          npm run performance         
+        sh '''                   
         '''
       }
     }
