@@ -12,7 +12,8 @@ pipeline {
     }
     stage ('Instalar dependencias') {
       steps {
-        sh '''          
+        sh '''
+          npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-proxy   
           npm install --verbose -d
         '''
       }
@@ -26,13 +27,15 @@ pipeline {
     }
     stage ('Inspección con Sonarqube: npm run sonar') {
       steps {
-        sh '''          
+        sh ''' 
+          npm run sonar        
         '''
       }
     }
     stage ('Publicar en Nexus: npm publish') {
       steps {
-        sh '''          
+        sh '''
+          npm publish       
         '''
       }
     }
@@ -49,13 +52,15 @@ pipeline {
     }
     stage ('Probar API con Newman: npm run newman') {
       steps {
-        sh '''          
+        sh '''
+          npm run newman         
         '''
       }
     }
     stage ('Smoke Test JMeter: npm run performance') {
       steps {
-        sh '''          
+        sh '''
+          npm run performance         
         '''
       }
     }
