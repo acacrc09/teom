@@ -13,8 +13,8 @@ pipeline {
     stage ('Instalar dependencias nexus') {
       steps {
         sh '''
-          npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-proxy   
-          npm install --verbose -d
+          /usr/bin/npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-proxy   
+          /usr/bin/npm install --verbose -d
         '''
       }
     }
