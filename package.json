@@ -6,8 +6,8 @@
         "start": "node ./bin/www",
         "start:dev": "nodemon ./bin/www",
         "unit": "jest test/jest",
-        "sonar": "sonar-scanner -Dsonar.projectKey=teom-ez -Dsonar.sources=. -Dsonar.host.url=http://sonarqube-poc-angular.apps.okd.soft1.xyz -Dsonar.login=6a9bb76e760fc80dbbd87b320319bb14b02030f1 -Dsonar.scm.forceReloadAll=true -Dsonar.qualitygate.wait=true",
-        "sonar:qa": "sonar-scanner -Dsonar.projectKey=teomqa -Dsonar.sources=. -Dsonar.host.url=http://sonarqube-poc-angular.apps.okd.soft1.xyz -Dsonar.login=6a9bb76e760fc80dbbd87b320319bb14b02030f1 -Dsonar.scm.forceReloadAll=true -Dsonar.qualitygate.wait=true",
+        "sonar": "sonar-scanner -Dsonar.projectKey=teom_ez -Dsonar.sources=. -Dsonar.host.url=http://sonarqube-poc-angular.apps.okd.soft1.xyz -Dsonar.login=6a9bb76e760fc80dbbd87b320319bb14b02030f1 -Dsonar.scm.forceReloadAll=true -Dsonar.qualitygate.wait=true",
+        "sonar:qa": "sonar-scanner -Dsonar.projectKey=teom-ezqa -Dsonar.sources=. -Dsonar.host.url=http://sonarqube-poc-angular.apps.okd.soft1.xyz -Dsonar.login=6a9bb76e760fc80dbbd87b320319bb14b02030f1 -Dsonar.scm.forceReloadAll=true -Dsonar.qualitygate.wait=true",
         "newman": "newman run test/newman/teom-test.postman_collection.json -e test/postman/teom.postman_environment.json",
         "nightwatch": "nightwatch",
         "performance": "/home/jenkins/apache-jmeter-5.2.1/bin/jmeter -n -t test/jmeter/Teom.jmx"
