@@ -13,7 +13,7 @@ pipeline {
     stage ('Instalar dependencias nexus') {
       steps {
         sh '''
-          npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-proxy   
+          npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-ez   
           npm install --verbose -d
         '''
       }
@@ -35,7 +35,7 @@ pipeline {
     stage ('Publicar en Nexus: npm publish') {
       steps {
         sh '''
-          npm publish       
+          npm publish --registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-ez/
         '''
       }
     }
