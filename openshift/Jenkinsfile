@@ -52,12 +52,12 @@ pipeline {
     //}
     stage ('Build image'){
       steps {
-        sh 'docker build -t $(imageTag) .'
+        sh 'docker build -t jhonjcastroh/teom-ez:develop .'
       }
     }
     stage('Push image to repository'){
       steps{
-        sh 'docker push $(imageTags)'
+        sh 'docker push jhonjcastroh/teom-ez:develop'
       }
     }
     stage ('Deploy aplications'){
