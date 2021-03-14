@@ -1,4 +1,9 @@
 pipeline {
+  environment {
+        registry = "jhonjcastroh/YourRepository" 
+        registryCredential = 'dockerhub_id' 
+        dockerImage = '' 
+    }
   agent {
     node {
       label 'nodejs'
@@ -52,12 +57,16 @@ pipeline {
     //}
     stage ('Build image'){
       steps {
-        sh 'docker build -t jhonjcastroh/teom-ez:develop .'
+        dockerImage = docker.build registry + ":develop" 
       }
     }
     stage('Push image to repository'){
       steps{
-        sh 'docker push jhonjcastroh/teom-ez:develop'
+        script { 
+          docker.withRegistry( '', registryCredential ) { 
+            dockerImage.push() 
+          }
+        } 
       }
     }
     stage ('Deploy aplications'){
