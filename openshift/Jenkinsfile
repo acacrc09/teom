@@ -57,7 +57,9 @@ pipeline {
     //}
     stage ('Build image'){
       steps {
-        dockerImage = docker.build registry + ":develop" 
+        script {
+          dockerImage = docker.build registry + ":develop"
+        }
       }
     }
     stage('Push image to repository'){
