@@ -39,7 +39,6 @@
 
     },
     "publishConfig": {
-        "cache": "~/.npm",
         "registry": "http://nexus-biq.apps.okd.soft1.xyz/repository/npm-ez/"
     }
 }
