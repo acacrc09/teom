@@ -1,8 +1,9 @@
 pipeline {
   environment {
-        registry = "jhonjcastroh/team-ez" 
+        registry = "jhonjcastroh/team-ez"
         registryCredential = 'dockerhub_id' 
-        dockerImage = '' 
+        dockerImage = ''
+        namespace = "test-dev"
     }
   agent {
     node {
@@ -77,8 +78,8 @@ pipeline {
         }
       }
     }
-    stage ('Deploy aplications'){
-      steps{
+    stage ('Deploy aplications') {
+      steps {
         // Create namespace if it doesn't exist
         sh("kubectl get ns ${namespace} || kubectl create ns ${namespace}")
         //Update the imagetag to the latest version
