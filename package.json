@@ -24,8 +24,7 @@
         "lodash": "^4.17.20",
         "mongodb": "^3.6.2",
         "morgan": "~1.10.0",
-        "pug": "^3.0.0",
-        "react-scripts": "4.0.3"
+        "pug": "^3.0.0"
     },
     "devDependencies": {
         "chromedriver": "^86.0.0",
