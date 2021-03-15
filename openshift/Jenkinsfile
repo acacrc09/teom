@@ -51,7 +51,7 @@ pipeline {
       //       openshift.withProject('teom') {
       //         openshift.selector('bc', 'nodejs-teom-develop').startBuild('--from-dir=./', '--wait=true', '--follow', '--loglevel=8')
       //       }
-      //     }
+      //     } 
       //   }
       // }
     //}
