@@ -66,12 +66,15 @@ pipeline {
       }
     }
     stage('Push image to repository'){
-      steps{
+      agent {
+        label 'docker-agent'
+      }
+      steps {
         script { 
-          docker.withRegistry( '', registryCredential ) { 
+          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) { 
             dockerImage.push() 
           }
-        } 
+        }
       }
     }
     stage ('Deploy aplications'){
