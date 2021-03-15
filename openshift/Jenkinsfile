@@ -51,12 +51,12 @@ pipeline {
       //       openshift.withProject('teom') {
       //         openshift.selector('bc', 'nodejs-teom-develop').startBuild('--from-dir=./', '--wait=true', '--follow', '--loglevel=8')
       //       }
-      //     } 
+      //     }
       //   }
       // }
     //}
     stage ('Build image'){
-      agent { 'docker:latest' }
+      agent { docker 'docker:latest' }
       steps {
         script {
           dockerImage = docker.build registry + ":develop"
