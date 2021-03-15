@@ -40,7 +40,7 @@ pipeline {
     stage ('Publicar en Nexus: npm publish') {
       steps {
         sh '''
-          npm publish --registry "http://nexus-biq.apps.okd.soft1.xyz/repository/npm-ez/"
+          npm publish --registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-ez/
         '''
       }
     }
