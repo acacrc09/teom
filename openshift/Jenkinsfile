@@ -57,7 +57,7 @@ pipeline {
     //}
     stage ('Build image'){
       agent {
-        docker { image 'docker:latest' }
+        agent { label 'docker-agent' }
       }
       steps {
         script {
