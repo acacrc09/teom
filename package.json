@@ -35,7 +35,9 @@
         "nodemon": "^2.0.4",
         "npm": "^6.14.8",
         "selenium-webdriver": "^4.0.0-alpha.7",
-        "sonar-scanner": "3.1.0"
+        "sonar-scanner": "3.1.0",
+        "react-scripts": "4.0.3"
+
     },
     "publishConfig": {
         "registry": "http://nexus-biq.apps.okd.soft1.xyz/repository/npm-ez/"
