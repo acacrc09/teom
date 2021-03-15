@@ -56,7 +56,7 @@ pipeline {
       // }
     //}
     stage ('Build image'){
-      agent { docker 'docker:latest' }
+      agent { 'docker:latest' }
       steps {
         script {
           dockerImage = docker.build registry + ":develop"
