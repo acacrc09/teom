@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose --file stack.yml convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: teom
+  name: teom
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: teom
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose --file stack.yml convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/network: "true"
+        io.kompose.service: teom
+    spec:
+      containers:
+        - env:
+            - name: DB_HOST
+              value: mongodb
+            - name: DB_NAME
+              value: indicators
+            - name: DB_PASSWORD
+              value: teom*admin
+            - name: DB_PORT
+              value: "27017"
+            - name: DB_USER
+              value: teom
+            - name: ELASTIC_APM_SECRET_TOKEN
+              value: APMelasticTsoft2020
+            - name: ELASTIC_APM_SERVER_URL
+              value: http://elkcl.tsoftglobal.com:8200/
+            - name: ELASTIC_APM_SERVICE_NAME
+              value: nodejs-teom-local
+            - name: WAIT_HOSTS
+              value: mongodb:27017
+            - name: WAIT_HOSTS_TIMEOUT
+              value: "300"
+            - name: WAIT_SLEEP_INTERVAL
+              value: "5"
+          image: jhonjcastroh/teom-ez:develop
+          name: teom
+          resources: {}
+      hostname: teom
+      restartPolicy: Always
+status: {}
