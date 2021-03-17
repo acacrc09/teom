@@ -7,7 +7,7 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: teom
-  name: teom
+  name: teom-ez
 spec:
   replicas: 1
   selector:

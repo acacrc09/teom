@@ -95,7 +95,7 @@ pipeline {
     stage ('Deploy on Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "teom-deployment.yaml,teom-proxy-deployment.yaml,teom-proxy-service.yaml,mongodb-data-persistentvolumeclaim.yaml,mongodb-deployment.yaml,mongodb-service.yaml,network-networkpolicy.yaml", kubeconfigId: "d9b27584-32a0-4b70-a303-7c7b440f5bdd")
+          kubernetesDeploy(configs: "teom-deployment.yaml,teom-proxy-deployment.yaml,teom-proxy-service.yaml,mongodb-deployment.yaml,mongodb-service.yaml,network-networkpolicy.yaml", kubeconfigId: "d9b27584-32a0-4b70-a303-7c7b440f5bdd")
         }
       }
     }
