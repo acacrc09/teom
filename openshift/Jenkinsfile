@@ -16,35 +16,36 @@ pipeline {
         checkout scm
       }
     }
-    stage ('Instalar dependencias nexus') {
-      steps {
-        sh '''
-          npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-ez
-          npm install --verbose -d
-        '''
-      }
-    }
-    stage ('Pruebas unitarias') {
-      steps {
-        sh '''
-          npm run unit
-        '''
-      }
-    }
-    stage ('Inspección con Sonarqube: npm run sonar') {
-      steps {
-        sh '''
-          npm run sonar
-        '''
-      }
-    }
-    stage ('Publicar en Nexus: npm publish') {
-      steps {
-        sh '''
-          npm publish
-        '''
-      }
-    }
+//    stage ('Instalar dependencias nexus') {
+//      steps {
+//        sh '''
+//          npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-ez
+//          npm install --verbose -d
+//        '''
+//      }
+//    }
+//    stage ('Pruebas unitarias') {
+//      steps {
+//        sh '''
+//          npm run unit
+//        '''
+//      }
+//    }
+//    stage ('Inspección con Sonarqube: npm run sonar') {
+//      steps {
+//        sh '''
+//          npm run sonar
+//        '''
+//      }
+//    }
+//    stage ('Publicar en Nexus: npm publish') {
+//      steps {
+//        sh '''
+//          npm publish
+//        '''
+//      }
+//    }
+
     //stage ('Desplegar') {
       // steps {
       //   script {
@@ -56,28 +57,28 @@ pipeline {
       //   }
       // }
     //}
-    stage ('Build image'){
-      agent {
-        label 'docker-agent'
-      }
-      steps {
-        script {
-          dockerImage = docker.build registry + ":develop"
-        }
-      }
-    }
-    stage('Push image to repository'){
-      agent {
-        label 'docker-agent'
-      }
-      steps {
-        script { 
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) { 
-            dockerImage.push() 
-          }
-        }
-      }
-    }
+//    stage ('Build image'){
+//      agent {
+//        label 'docker-agent'
+//      }
+//      steps {
+//        script {
+//          dockerImage = docker.build registry + ":develop"
+//        }
+//      }
+//    }
+//    stage('Push image to repository'){
+//      agent {
+//        label 'docker-agent'
+//      }
+//      steps {
+//        script { 
+//          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) { 
+//            dockerImage.push() 
+//          }
+//        }
+//      }
+//    }
     // stage ('Deploy aplications') {
       // steps {
         // Create namespace if it doesn't exist
