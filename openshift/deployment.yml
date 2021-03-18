@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teom-ez
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teom-ez
+  template:
+    metadata:
+      labels:
+        app: teom-ez
+    spec:
+      containers:
+      - name: teom-ez
+        image: jhonjcastroh/teom-ez:develop
+        ports:
+        - containerPort: 80
