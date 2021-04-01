@@ -16,82 +16,69 @@ pipeline {
         checkout scm
       }
     }
-//    stage ('Instalar dependencias nexus') {
-//      steps {
-//        sh '''
-//          npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-ez
-//          npm install --verbose -d
-//        '''
-//      }
-//    }
-//    stage ('Pruebas unitarias') {
-//      steps {
-//        sh '''
-//          npm run unit
-//        '''
-//      }
-//    }
-//    stage ('Inspección con Sonarqube: npm run sonar') {
-//      steps {
-//        sh '''
-//          npm run sonar
-//        '''
-//      }
-//    }
-//    stage ('Publicar en Nexus: npm publish') {
-//      steps {
-//        sh '''
-//          npm publish
-//        '''
-//      }
-//    }
+    stage ('Instalar dependencias nexus') {
+      steps {
+        sh '''
+          npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-ez
+          npm install --verbose -d
+        '''
+      }
+    }
+    stage ('Pruebas unitarias') {
+      steps {
+        sh '''
+          npm run unit
+        '''
+      }
+    }
+    stage ('Inspección con Sonarqube: npm run sonar') {
+      steps {
+        sh '''
+          npm run sonar
+        '''
+      }
+    }
+    stage ('Publicar en Nexus: npm publish') {
+      steps {
+        sh '''
+          npm publish
+        '''
+      }
+    }
 
-    //stage ('Desplegar') {
-      // steps {
-      //   script {
-      //     openshift.withCluster() {
-      //       openshift.withProject('teom') {
-      //         openshift.selector('bc', 'nodejs-teom-develop').startBuild('--from-dir=./', '--wait=true', '--follow', '--loglevel=8')
-      //       }
-      //     }
-      //   }
-      // }
-    //}
-//    stage ('Build image'){
-//      agent {
-//        label 'docker-agent'
-//      }
-//      steps {
-//        script {
-//          dockerImage = docker.build registry + ":develop"
-//        }
-//      }
-//    }
-//    stage('Push image to repository'){
-//      agent {
-//        label 'docker-agent'
-//      }
-//      steps {
-//        script { 
-//          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) { 
-//            dockerImage.push() 
-//          }
-//        }
-//      }
-//    }
-    // stage ('Deploy aplications') {
-      // steps {
-        // Create namespace if it doesn't exist
-        // sh("kubectl get ns ${namespace} || kubectl create ns ${namespace}")
-        //Update the imagetag to the latest version
-        // sh("sed -i.bak 's#gcr.io/${project}/${appName}:${imageVersion}#${imageTag}#' ./k8s/development/*.yaml")
-        //Create or update resources
-        // sh("kubectl --namespace=${namespace} apply -f k8s/development/deployment.yaml")
-        // sh("kubectl --namespace=${namespace} apply -f k8s/development/service.yaml")
-        //Grab the external Ip address of the service
-        // sh("echo http://`kubectl --namespace=${namespace} get service/${feSvcName} --output=json | jq -r '.status.loadBalancer.ingress[0].ip'` > ${feSvcName}")
-      // }
-    // }
+    stage ('Desplegar') {
+       steps {
+         script {
+           openshift.withCluster() {
+             openshift.withProject('teom') {
+               openshift.selector('bc', 'nodejs-teom-develop').startBuild('--from-dir=./', '--wait=true', '--follow', '--loglevel=8')
+             }
+           }
+         }
+       }
+    }
+    stage ('Build image'){
+      agent {
+        label 'docker-agent'
+      }
+      steps {
+        script {
+          dockerImage = docker.build registry + ":develop"
+        }
+      }
+    }
+    stage('Push image to repository'){
+      agent {
+        label 'docker-agent'
+      }
+      steps {
+        script { 
+          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) { 
+            dockerImage.push() 
+          }
+        }
+      }
+    }
     stage ('Deploy on Kubernetes') {
       steps {
         script {
