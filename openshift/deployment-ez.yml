@@ -28,9 +28,9 @@ metadata:
   labels:
     app: teom-ez
 spec:
+  type: NodePort
   ports:
   - port: 30080
-    protocol: TCP
-    targetPort: 80
+    nodePort: 80
   selector:
     app: teom-ez
