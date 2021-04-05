@@ -1,66 +1,66 @@
 pipeline {
-  environment {
-        registry = "jhonjcastroh/teom-ez"
-        registryCredential = 'dockerhub_id' 
-        dockerImage = ''
-        namespace = "test-dev"
-    }
-  agent {
-    node {
-      label 'docker-agent'
-    }
-  }
-  stages {
-    stage ('Checkout codigo fuente') {
-      steps {
-        checkout scm
-      }
-    }
-    stage ('Instalar dependencias nexus') {
-      steps {
-        sh '''
-          npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-proxy
-          npm install --verbose -d
-        '''
-      }
-    }
-    stage ('Pruebas unitarias') {
-      steps {
-        sh '''
-          npm run unit
-        '''
-      }
-    }
-    stage ('Inspección con Sonarqube: npm run sonar') {
-      steps {
-        sh '''
-          npm run sonar
-        '''
-      }
-    }
-    stage ('Publicar en Nexus: npm publish') {
-      steps {
-        sh '''
-          npm publish
-        '''
-      }
-    }
-    stage ('Build image'){
-      steps {
-        script {
-          dockerImage = docker.build registry + ":develop"
-        }
-      }
-    }
-    stage('Push image to repository'){
-      steps {
-        script { 
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) { 
-            dockerImage.push() 
-          }
-        }
-      }
-    }
+  // environment {
+  //       registry = "jhonjcastroh/teom-ez"
+  //       registryCredential = 'dockerhub_id' 
+  //       dockerImage = ''
+  //       namespace = "test-dev"
+  //   }
+  // agent {
+  //   node {
+  //     label 'docker-agent'
+  //   }
+  // }
+  // stages {
+  //   stage ('Checkout codigo fuente') {
+  //     steps {
+  //       checkout scm
+  //     }
+  //   }
+  //   stage ('Instalar dependencias nexus') {
+  //     steps {
+  //       sh '''
+  //         npm config set registry http://nexus-biq.apps.okd.soft1.xyz/repository/npm-proxy
+  //         npm install --verbose -d
+  //       '''
+  //     }
+  //   }
+  //   stage ('Pruebas unitarias') {
+  //     steps {
+  //       sh '''
+  //         npm run unit
+  //       '''
+  //     }
+  //   }
+  //   stage ('Inspección con Sonarqube: npm run sonar') {
+  //     steps {
+  //       sh '''
+  //         npm run sonar
+  //       '''
+  //     }
+  //   }
+  //   stage ('Publicar en Nexus: npm publish') {
+  //     steps {
+  //       sh '''
+  //         npm publish
+  //       '''
+  //     }
+  //   }
+  //   stage ('Build image'){
+  //     steps {
+  //       script {
+  //         dockerImage = docker.build registry + ":develop"
+  //       }
+  //     }
+  //   }
+  //   stage('Push image to repository'){
+  //     steps {
+  //       script { 
+  //         docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) { 
+  //           dockerImage.push() 
+  //         }
+  //       }
+  //     }
+  //   }
     stage ('Deploy on Kubernetes') {
       steps {
         script {
