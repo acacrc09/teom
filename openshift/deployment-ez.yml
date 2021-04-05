@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: teom-ez-deployment
+  name: teom-ez
   labels:
     app: teom-ez
 spec:
@@ -24,12 +24,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: teom-ez-svc
+  name: teom-ez
   labels:
     app: teom-ez
 spec:
+  type: NodePort
   ports:
   - port: 3000
-    targetPort: 30080
+    nodePort: 30080
   selector:
     app: teom-ez
