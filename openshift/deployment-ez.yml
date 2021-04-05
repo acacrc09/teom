@@ -24,13 +24,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: teom-ez
+  name: teom-ez-svc
   labels:
     app: teom-ez
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: 3000
-    nodePort: 30080
   selector:
     app: teom-ez
