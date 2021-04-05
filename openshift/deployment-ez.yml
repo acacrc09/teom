@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: teom-ez-deployment
   labels:
-    app: nginx
+    app: teom-ez
 spec:
   replicas: 3
   selector:
