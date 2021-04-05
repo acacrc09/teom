@@ -20,7 +20,7 @@ spec:
         - containerPort: 3000
         env:
           - name: WAIT_HOSTS
-            value: mongodb:27017
+            value: mongodb
           - name: WAIT_HOSTS_TIMEOUT
             value: 300
           - name: WAIT_SLEEP_INTERVAL
@@ -41,6 +41,7 @@ spec:
             value: APMelasticTsoft2020
           - name: ELASTIC_APM_SERVER_URL
             value: http://elkcl.tsoftglobal.com:8200/
+
       - name: mongodb
         image: mongo:latest
         ports:
