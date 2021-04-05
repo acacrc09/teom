@@ -30,6 +30,7 @@ metadata:
 spec:
   ports:
   - port: 30080
+    protocol: TCP
     targetPort: 80
   selector:
     app: teom-ez
