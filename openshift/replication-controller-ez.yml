@@ -18,28 +18,42 @@ spec:
         image: jhonjcastroh/teom-ez:develop
         ports:
         - containerPort: 3000
-        environment:
-          - 'WAIT_HOSTS=mongodb:27017'
-          - 'WAIT_HOSTS_TIMEOUT=300'
-          - 'WAIT_SLEEP_INTERVAL=5'
-          - 'DB_USER=teom'
-          - 'DB_PASSWORD=teom*admin'
-          - 'DB_HOST=mongodb'
-          - 'DB_PORT=27017'
-          - 'DB_NAME=indicators'
-          - 'ELASTIC_APM_SERVICE_NAME=nodejs-teom-local'
-          - 'ELASTIC_APM_SECRET_TOKEN=APMelasticTsoft2020'
-          - 'ELASTIC_APM_SERVER_URL=http://elkcl.tsoftglobal.com:8200/'
+        env:
+          - name: WAIT_HOSTS
+            value: mongodb:27017
+          - name: WAIT_HOSTS_TIMEOUT
+            value: 300
+          - name: WAIT_SLEEP_INTERVAL
+            value: 5
+          - name: DB_USER
+            value: teom
+          - name: DB_PASSWORD
+            value: teom*admin
+          - name: DB_HOST
+            value: mongodb
+          - name: DB_PORT
+            value: 27017
+          - name: DB_NAME
+            value: indicators
+          - name: ELASTIC_APM_SERVICE_NAME
+            value: nodejs-teom-local
+          - name: ELASTIC_APM_SECRET_TOKEN
+            value: APMelasticTsoft2020
+          - name: ELASTIC_APM_SERVER_URL
+            value: http://elkcl.tsoftglobal.com:8200/
       - name: mongodb
         image: mongo:latest
         ports:
         - containerPort: 27017
         volumes:
           - 'mongodb-data:/data/db'
-        environment:
-          - 'MONGO_INITDB_ROOT_USERNAME=teom'
-          - 'MONGO_INITDB_ROOT_PASSWORD=teom*admin'
-          - 'MONGO_INITDB_DATABASE=indicators'
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            value: teom
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            value: teom*admin
+          - name: MONGO_INITDB_DATABASE
+            value: indicators
 
 ---
 apiVersion: v1
