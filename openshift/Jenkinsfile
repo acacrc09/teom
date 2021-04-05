@@ -4,13 +4,13 @@ pipeline {
         registryCredential = 'dockerhub_id' 
         dockerImage = ''
         namespace = "test-dev"
-    }
+  }
   agent {
     node {
       label 'docker-agent'
     }
   }
-  // stages {
+  stages {
   //   stage ('Checkout codigo fuente') {
   //     steps {
   //       checkout scm
