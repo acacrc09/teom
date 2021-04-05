@@ -1,15 +1,15 @@
 pipeline {
-  // environment {
-  //       registry = "jhonjcastroh/teom-ez"
-  //       registryCredential = 'dockerhub_id' 
-  //       dockerImage = ''
-  //       namespace = "test-dev"
-  //   }
-  // agent {
-  //   node {
-  //     label 'docker-agent'
-  //   }
-  // }
+  environment {
+        registry = "jhonjcastroh/teom-ez"
+        registryCredential = 'dockerhub_id' 
+        dockerImage = ''
+        namespace = "test-dev"
+    }
+  agent {
+    node {
+      label 'docker-agent'
+    }
+  }
   // stages {
   //   stage ('Checkout codigo fuente') {
   //     steps {
