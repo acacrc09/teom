@@ -39,7 +39,7 @@ spec:
         environment:
           - 'MONGO_INITDB_ROOT_USERNAME=teom'
           - 'MONGO_INITDB_ROOT_PASSWORD=teom*admin'
-          - 'MONGO_INITDB_DATABASE=indicators
+          - 'MONGO_INITDB_DATABASE=indicators'
 
 ---
 apiVersion: v1
