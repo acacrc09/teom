@@ -74,3 +74,17 @@ spec:
     nodePort: 30257
   selector:
     name: teom-ez
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-teom-ez-svc
+  labels:
+    name: mongodb
+spec:
+  type: NodePort
+  ports:
+  - port: 27017
+    nodePort: 27017
+  selector:
+    name: mongodb
