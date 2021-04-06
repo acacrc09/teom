@@ -5,7 +5,7 @@ metadata:
   labels:
     name: teom-ez-rc
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     name: teom-ez-rc
   template:
@@ -20,7 +20,7 @@ spec:
         - containerPort: 3000
         env:
           - name: WAIT_HOSTS
-            value: 192.168.200.22:30017
+            value: mongodb:30017
           - name: WAIT_HOSTS_TIMEOUT
             value: 300
           - name: WAIT_SLEEP_INTERVAL
@@ -30,17 +30,17 @@ spec:
           - name: DB_PASSWORD
             value: teom*admin
           - name: DB_HOST
-            value: 192.168.200.22
+            value: mongodb
           - name: DB_PORT
             value: 30017
           - name: DB_NAME
             value: indicators
-          - name: ELASTIC_APM_SERVICE_NAME
-            value: nodejs-teom-local
-          - name: ELASTIC_APM_SECRET_TOKEN
-            value: APMelasticTsoft2020
-          - name: ELASTIC_APM_SERVER_URL
-            value: http://elkcl.tsoftglobal.com:8200/
+          # - name: ELASTIC_APM_SERVICE_NAME
+          #   value: nodejs-teom-local
+          # - name: ELASTIC_APM_SECRET_TOKEN
+          #   value: APMelasticTsoft2020
+          # - name: ELASTIC_APM_SERVER_URL
+          #   value: http://elkcl.tsoftglobal.com:8200/
 
       - name: mongodb
         image: mongo:latest
