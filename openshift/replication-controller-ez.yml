@@ -71,7 +71,7 @@ spec:
   type: NodePort
   ports:
   - port: 3000
-    nodePort: 30257
+    nodePort: 30300
   selector:
     name: teom-ez-rc
 ---
