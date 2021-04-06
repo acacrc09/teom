@@ -1,20 +1,20 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: teom-ez
+  name: teom-ez-rc
   labels:
-    name: teom-ez
+    name: teom-ez-rc
 spec:
   replicas: 3
   selector:
-    name: teom-ez
+    name: teom-ez-rc
   template:
     metadata:
       labels:
-        name: teom-ez
+        name: teom-ez-rc
     spec:
       containers:
-      - name: teom-ez
+      - name: teom-ez-rc
         image: jhonjcastroh/teom-ez:develop
         ports:
         - containerPort: 3000
@@ -64,16 +64,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: teom-ez-svc
+  name: teom-ez-rc-svc
   labels:
-    name: teom-ez
+    name: teom-ez-rc
 spec:
   type: NodePort
   ports:
   - port: 3000
     nodePort: 30257
   selector:
-    name: teom-ez
+    name: teom-ez-rc
 ---
 apiVersion: v1
 kind: Service
