@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: teom-ez
+  name: teom-ez-deployment
   labels:
     app: teom-ez
 spec:
