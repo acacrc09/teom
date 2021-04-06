@@ -5,7 +5,7 @@ metadata:
   labels:
     name: teom-ez-rc
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     name: teom-ez-rc
   template:
