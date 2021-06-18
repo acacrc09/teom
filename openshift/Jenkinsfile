@@ -62,13 +62,6 @@ pipeline {
         sh '''                   
         '''
       }
-    }
-    stage ('Probar WEB con Nightwatch') {
-      steps {
-        sh '''
-          npm run unit
-        '''
-      }
-    }
+    }    
   }
 }
