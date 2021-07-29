@@ -43,7 +43,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.withProject('teom') {
+            openshift.withProject('workshopopenshift') {
               openshift.selector('bc', 'nodejs-teom-developregionalopenshift').startBuild('--from-dir=./', '--wait=true', '--follow', '--loglevel=8')
             }
           }
