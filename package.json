@@ -6,7 +6,7 @@
         "start": "node ./bin/www",
         "start:dev": "nodemon ./bin/www",
         "unit": "jest test/jest",
-        "sonar": "sonar-scanner -Dsonar.projectKey=teom -Dsonar.sources=. -Dsonar.host.url=http://sonarqube-teom.apps.ocp.tsoftnow.com -Dsonar.login=af6c67e40efbc1def75147ac20052355c4241143 -Dsonar.scm.forceReloadAll=true -Dsonar.qualitygate.wait=true",
+        "sonar": "sonar-scanner -Dsonar.projectKey=teom -Dsonar.sources=. -Dsonar.host.url=http://sonarqube-teom.apps.ocp.tsoftnow.com -Dsonar.login=cc234b09ede8777f92ff6ab1ed106c5152ca4131 -Dsonar.scm.forceReloadAll=true -Dsonar.qualitygate.wait=true",
         "newman": "newman run test/newman/teom-test.postman_collection.json -e test/postman/teom.postman_environment.json",
         "nightwatch": "nightwatch",
         "performance": "/home/jenkins/apache-jmeter-5.2.1/bin/jmeter -n -t test/jmeter/Teom.jmx"
