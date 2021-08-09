@@ -12,7 +12,7 @@
         "performance": "/home/jenkins/apache-jmeter-5.2.1/bin/jmeter -n -t test/jmeter/Teom.jmx"
     },
     "dependencies": {
-        "axios": "^0.20.0",
+        "axios": "^0.21.1",
         "cheerio": "^1.0.0-rc.3",
         "cookie-parser": "~1.4.5",
         "debug": "~4.2.0",
@@ -26,7 +26,7 @@
         "pug": "^3.0.0"
     },
     "devDependencies": {
-        "chromedriver": "^86.0.0",
+        "chromedriver": "^92.0.1",
         "install": "0.13.0",
         "jest": "24.9.0",
         "newman": "^5.2.0",
