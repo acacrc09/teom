@@ -68,6 +68,7 @@ class IndicatorsSrevices {
     });
     return newIndicator || {};
   }
+
   async create({ body }) {
     let result;
     if (_.isEmpty(body)) {

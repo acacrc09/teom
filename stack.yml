@@ -25,6 +25,7 @@ services:
       - 'DB_HOST=mongodb'
       - 'DB_PORT=27017'
       - 'DB_NAME=indicators'
+      - 'ELASTIC_APM_SERVICE=true'
       - 'ELASTIC_APM_SERVICE_NAME=nodejs-teom-local'
       - 'ELASTIC_APM_SECRET_TOKEN=APMelasticTsoft2020'
       - 'ELASTIC_APM_SERVER_URL=http://elkcl.tsoftglobal.com:8200/'

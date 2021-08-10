@@ -9,7 +9,9 @@ const logger = require('morgan');
 const indexRouter = require('./routes/views/index');
 const adminRouter = require('./routes/views/admin');
 const indicatorsApiRouter = require('./routes/api/indicators');
-const apm = require('elastic-apm-node').start()
+const apm =
+  process.env.ELASTIC_APM.toLowerCase() === 'true' &&
+  require('elastic-apm-node').start();
 
 // application
 const app = express();
@@ -18,7 +20,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// middlewares
+// middleware
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -26,10 +28,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Variable global para plantilla PUG/JADE.
-app.use(function(req, res, next) {
-    res.locals.links = [{ url: "./hipotecario", label: 'Hipotecario', icon: 'home' }, { url: "./portabilidad", label: 'Portabilidad', icon: 'money' }, { url: "./credito", label: 'Credito Consumo', icon: 'credit-card' }]
-    next();
-})
+app.use(function (req, res, next) {
+  res.locals.links = [
+    { url: './hipotecario', label: 'Hipotecario', icon: 'home' },
+    { url: './potabilidad', label: 'Potabilidad', icon: 'money' },
+    { url: './credito', label: 'Credito Consumo', icon: 'credit-card' },
+  ];
+  next();
+});
 
 // routes
 app.use('/', indexRouter);
@@ -37,20 +43,22 @@ app.use('/admin', adminRouter);
 app.use('/api/indicators', indicatorsApiRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    apm.captureError(createError(404))
-    next(createError(404));
+app.use(function (req, res, next) {
+  // REVIEW Se agrega desactivado lógico para el modulo de APM
+  if (process.env.ELASTIC_APM.toLowerCase() === 'true')
+    apm.captureError(createError(404));
+  next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function (err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 module.exports = app;
